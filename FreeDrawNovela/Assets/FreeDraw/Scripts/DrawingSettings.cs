@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 
 namespace FreeDraw
 {
@@ -65,6 +67,10 @@ namespace FreeDraw
         public void PartialSetEraser()
         {
             SetMarkerColour(new Color(255f, 255f, 255f, 0.5f));
+        }
+        public void ResetButton(){
+            SceneManager.LoadScene(0);
+            Debug.Log("Game did reload");
         }
     }
 }

@@ -283,8 +283,9 @@ namespace FreeDraw
         // Changes every pixel to be the reset colour
         public void ResetCanvas()
         {
-            drawable_texture.SetPixels(clean_colours_array);
-            drawable_texture.Apply();
+            //Simplemente voy a reinicar la escena
+            // drawable_texture.SetPixels(clean_colours_array);
+            // drawable_texture.Apply();
         }
 
 
@@ -304,7 +305,7 @@ namespace FreeDraw
                 clean_colours_array[x] = Reset_Colour;
 
             // Should we reset our canvas image when we hit play in the editor?
-            //if (Reset_Canvas_On_Play)
+            //if (Reset_Canvas_On_Play){
                 //ResetCanvas();
         }
     }

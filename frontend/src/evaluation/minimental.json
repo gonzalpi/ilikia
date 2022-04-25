@@ -1,0 +1,125 @@
+{
+    "name": "Examen mínimo del estado mental",
+    "categories":
+    [
+        "Orientación",
+        "Registro y memoria inmediata",
+        "Atención y cálculo",
+        "Lenguaje",
+        "Memoria diferida",
+        "Visoespacial",
+        "Memoria semántica",
+        "Lenguaje y repetición"
+    ],
+    "questions":
+    [
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto por día, mes y año correcto. PERMITIDO:  Diferencia de 1 día  al cambiar el mes o el año, 1 mes cuando hay cambio de mes, durante el primer día del mes siguiente y 1 año en los primeros 7 días de ocurrido el cambio de año.",
+            "text": "¿Qué fecha es hoy? (día, mes y año)",
+            "scores": [0, 1, 2, 3]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta.",
+            "text": "¿Qué día de la semana es hoy?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta. PERMITIDO: Diferencia de 1 hora con respecto a la hora en la que se está entrevistando al paciente.",
+            "text": "¿Qué hora es?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta.",
+            "text": "¿En dónde estamos ahora?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si identifica correctamente el nivel del edificio en dónde se está realizando la entrevista o bien identifica el número de casa o de departamento.",
+            "text": "¿En qué piso o departamento estamos?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta. Si el paciente es entrevistado fuera de su domicilio, se les puede pedir identificar el sector o área de la ciudad en dónde se está llevando a cabo la entrevista.",
+            "text": "¿Qué colonia es esta?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta.",
+            "text": "¿Qué ciudad es esta?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 0,
+            "instructions" : "Asignar 1 punto si la respuesta es correcta.",
+            "text": "¿Qué país es este?",
+            "scores": [0, 1]
+        },
+        {
+            "category": 1,
+            "instructions" : "Para  evaluar  retención  es  muy importante  que  no  existan  otros  estímulos  que  puedan  distraer  al  paciente.  Pronunciación  clara, 1 palabra por segundo.  Se  califica  el  primer intento, sin embargo, se le deberán repetir hasta que el paciente logre pronunciar todas las palabras, con un máximo de tres repeticiones. Si no logra repetir los tres objetos, deberá de continuarse con la prueba.",
+            "text": "Repita estos 3 objetos: PAPEL, BICICLETA, CUCHARA.",
+            "scores": [0, 1, 2, 3]
+        },
+        {
+            "category": 2,
+            "instructions" : "<b>Si el paciente tiene menos de 3 años de escolaridad, asignar 3 puntos y continuar a la siguiente pregunta.</b> Asignar 1 punto por cada número correcto. La instrucción se dará solo un vez.  Si  la  persona  contesta  en  forma  incorrecta  se  calificará  con  0,  y  se  le  dará  la  respuesta  correcta  para posteriormente  pedirle  que  continúe,  pero  de  ninguna  manera  se  tendrá  que  repetir  la  instrucción,  pero  NUNCA  decirle  que  debe continuar restando de 7 en 7. De esta forma se continuará sucesivamente.",
+            "text": "Le voy a pedir que reste de 7 en 7 a partir de 100.",
+            "scores": []
+        },
+        {
+            "category": 3,
+            "instructions" : "",
+            "text": "Le voy a dar algunas instrucciones. Por favor sígalas en el orden en que se las voy a decir. Tome este papel con su mano derecha, dóblelo por la mitad y colóquela en el piso.",
+            "scores": []
+        },
+        {
+            "category": 3,
+            "instructions" : "",
+            "text": "Por favor haga lo que dice aquí. 'CIERRE LOS OJOS'",
+            "scores": []
+        },
+        {
+            "category": 3,
+            "instructions" : "",
+            "text": "Quiero que, por favor, escriba una frase que diga un mensaje.",
+            "scores": []
+        },
+        {
+            "category": 4,
+            "instructions" : "",
+            "text": "Dígame los 3 objetos que le mencioné al principio.",
+            "scores": []
+        },
+        {
+            "category": 5,
+            "instructions" : "",
+            "text": "Copie el dibujo tal como está.",
+            "scores": []
+        },
+        {
+            "category": 6,
+            "instructions" : "",
+            "text": "¿Qué es esto? (RELOJ)",
+            "scores": []
+        },
+        {
+            "category": 6,
+            "instructions" : "",
+            "text": "¿Qué es esto? (LÁPIZ)",
+            "scores": []
+        },
+        {
+            "category": 7,
+            "instructions" : "",
+            "text": "Ahora le voy a decir una frase que tendrá que repetir después de mí. Solo se la puedo decir 1 sola vez, así que ponga mucha atención: 'Ni no, ni si, ni pero.'",
+            "scores": []
+        }
+    ]
+}

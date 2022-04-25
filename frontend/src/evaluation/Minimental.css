@@ -1,0 +1,40 @@
+.exam-info {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    align-items: center;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+.exam-info > * {
+    margin: 40px;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+}
+
+.nav-buttons > * {
+    margin: 10px;
+}
+
+button {
+    background-color: #D7EC7C;
+    width: 7em;
+    height: 2em;
+    border-radius: 40px;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 1.5em;
+    border: none;
+}
+
+button:active {
+    background-color: #C7DC6C;
+}

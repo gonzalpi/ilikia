@@ -69,57 +69,65 @@
         },
         {
             "category": 2,
-            "instructions" : "<b>Si el paciente tiene menos de 3 años de escolaridad, asignar 3 puntos y continuar a la siguiente pregunta.</b> Asignar 1 punto por cada número correcto. La instrucción se dará solo un vez.  Si  la  persona  contesta  en  forma  incorrecta  se  calificará  con  0,  y  se  le  dará  la  respuesta  correcta  para posteriormente  pedirle  que  continúe,  pero  de  ninguna  manera  se  tendrá  que  repetir  la  instrucción,  pero  NUNCA  decirle  que  debe continuar restando de 7 en 7. De esta forma se continuará sucesivamente.",
+            "note": "Si el paciente tiene menos de 3 años de escolaridad, asignar 3 puntos y continuar a la siguiente pregunta.",
+            "instructions" : "Asignar 1 punto por cada número correcto. La instrucción se dará solo un vez. Si la persona contesta en forma incorrecta se calificará con 0, y se le dará la respuesta correcta para posteriormente pedirle que continúe, pero de ninguna manera se tendrá que repetir la instrucción, pero NUNCA decirle que debe continuar restando de 7 en 7. De esta forma se continuará sucesivamente.",
             "text": "Le voy a pedir que reste de 7 en 7 a partir de 100.",
-            "scores": []
+            "scores": [0, 1, 2, 3, 4, 5]
         },
         {
             "category": 3,
-            "instructions" : "",
+            "instructions" : "La instrucción se puede dar solamente una vez. Se califica como incorrecta cuando el papel se toma con la mano izquierda, se dobla más de una sola vez o se dobla por otra parte que no sea la mitad, así como cuando la hoja se deja en alguna otra parte que no sea el piso. Se recomenda: tamaño media carta. En caso de que el paciente tenga alteraciones de la movilidad del miembro torácico derecho, se podrá dar la instrucción de hacerlo con la mano izquierda.",
             "text": "Le voy a dar algunas instrucciones. Por favor sígalas en el orden en que se las voy a decir. Tome este papel con su mano derecha, dóblelo por la mitad y colóquela en el piso.",
-            "scores": []
+            "scores": [0, 1, 2, 3]
         },
         {
             "category": 3,
-            "instructions" : "",
+            "note": "Si el paciente tiene menos de 3 años de escolaridad, asignar 1 punto y continuar a la siguiente pregunta.",
+            "instructions" : "Colóquese la pantalla a una distancia no mayor de 30 centímetros y con auxiliar visual (si lo requiere). Presione el botón mostrar para desplegar instrucción.",
             "text": "Por favor haga lo que dice aquí. 'CIERRE LOS OJOS'",
-            "scores": []
+            "additional": "hypertext resource displaying text",
+            "scores": [0, 1]
         },
         {
             "category": 3,
-            "instructions" : "",
+            "note": "Si el paciente tiene menos de 3 años de escolaridad, asignar 1 punto y continuar a la siguiente pregunta.",
+            "instructions" : "La respuesta se considera positiva cuando la frese contiene verbo, sujeto y sustantivo; la presencia de estos tres elementos es indispensable.",
             "text": "Quiero que, por favor, escriba una frase que diga un mensaje.",
-            "scores": []
+            "scores": [0, 1]
         },
         {
             "category": 4,
-            "instructions" : "",
+            "instructions" : "Asigne 1 punto por cada respuesta correcta. (PAPEL, BICICLETA, CUCHARA)",
             "text": "Dígame los 3 objetos que le mencioné al principio.",
-            "scores": []
+            "scores": [0, 1, 2, 3]
         },
         {
             "category": 5,
-            "instructions" : "",
+            "note": "Si el paciente tiene menos de 3 años de escolaridad, asignar 1 punto y continuar a la siguiente pregunta.",
+            "instructions" : "Presione el botón mostrar para desplegar pantalla de dibujo.",
             "text": "Copie el dibujo tal como está.",
-            "scores": []
+            "additional": "hypertext resource displaying webgl embed",
+            "scores": [0, 1]
         },
         {
             "category": 6,
-            "instructions" : "",
-            "text": "¿Qué es esto? (RELOJ)",
-            "scores": []
+            "instructions" : "Colóquese la pantalla a una distancia de, al menos, 30 centímetros. Asigne 1 punto si la respuesta es 'reloj'. Presione el botón mostrar para desplegar la imagen.",
+            "text": "¿Qué es esto? (RELOJ) ¿Para qué es?",
+            "additional": "hypertext resource displaying image",
+            "scores": [0, 1]
         },
         {
             "category": 6,
-            "instructions" : "",
-            "text": "¿Qué es esto? (LÁPIZ)",
-            "scores": []
+            "instructions" : "Colóquese la pantalla a una distancia de, al menos, 30 centímetros. Asigne 1 punto si la respuesta es 'lápiz'. La respuesta se considera incorrecta si es 'lapicero', 'lapicera', 'pluma', 'bolígrafo', etc. Presione el botón mostrar para desplegar la imagen.",
+            "text": "¿Qué es esto? (LÁPIZ) ¿Para qué es?",
+            "additional": "hypertext resource displaying image",
+            "scores": [0, 1]
         },
         {
             "category": 7,
-            "instructions" : "",
+            "instructions" : "La respuesta se considera correcta solo cuando repite la frase completa y conservando el orden en el cual la frase fue dicha.",
             "text": "Ahora le voy a decir una frase que tendrá que repetir después de mí. Solo se la puedo decir 1 sola vez, así que ponga mucha atención: 'Ni no, ni si, ni pero.'",
-            "scores": []
+            "scores": [0, 1]
         }
     ]
 }

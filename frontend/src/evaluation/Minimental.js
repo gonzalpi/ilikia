@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultQuestion from "./DefaultQuestion";
+import "./Minimental.css"
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(0)
 
@@ -26,20 +27,52 @@ export default function Evaluation()
     }
 
     return (
-        <>
+        <div className="exam-info">
             {/* Examen */}
-            {qNum >= 0 && qNum < minimental.questions.length && <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />}
+            {
+                qNum >= 0 &&
+                qNum < minimental.questions.length &&
+                <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />
+            }
             {/* Pantalla previa */}
-            {qNum === -1 && <><h1>{minimental.name}</h1><p>A continuación se presentará una serie de instrucciones y preguntas que deberán hacerse al paciente.</p></>}
+            {
+                qNum === -1 &&
+                <>
+                    <h1>{minimental.name}</h1>
+                    <p>A continuación se presentará una serie de instrucciones y preguntas que deberán hacerse al paciente.</p>
+                </>
+            }
             {/* Pantalla de envío de datos */}
-            {qNum === minimental.questions.length && <><h1>{minimental.name}</h1><p>Presione Enviar para finalizar.</p></>}
+            {
+                qNum === minimental.questions.length &&
+                <>
+                    <h1>{minimental.name}</h1>
+                    <p>Presione Enviar para finalizar.</p>
+                </>
+            }
             {/* Botones de navegación */}
-            <button onClick={prevQ}>Atrás</button>
-            <button onClick={printState}>(dev)Estado</button>
-            {/* Botón de continuar disponible excepto en última pantalla */}
-            {qNum < minimental.questions.length && <button onClick={nextQ}>Continuar</button>}
-            {/* Botón de enviar datos disponible en última pantalla */}
-            {qNum === minimental.questions.length && <button onClick={sendData}>Enviar</button>}
-        </>
+            <div className="nav-buttons">
+                <div>
+                    <button onClick={prevQ}>Atrás</button>
+                </div>
+                <div>
+                    {/* Botón de desarrollo: imprime puntajes e índice a consola */}
+                    {/* <button onClick={printState}>(dev)Estado</button> */}
+                </div>
+                <div>
+                {
+                    qNum < minimental.questions.length &&
+                    <button onClick={nextQ}>Continuar</button>
+                }
+                </div>
+                {/* Botón de enviar datos disponible en última pantalla */}
+                <div>
+                {
+                    qNum === minimental.questions.length &&
+                    <button onClick={sendData}>Enviar</button>
+                }
+                </div>
+            </div>
+        </div>
     )
 }

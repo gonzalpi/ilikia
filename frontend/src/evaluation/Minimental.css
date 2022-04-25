@@ -13,6 +13,11 @@
     margin: 40px;
 }
 
+.instructions {
+    font-weight: 400;
+    text-align: center;
+}
+
 .nav-buttons {
     display: flex;
     justify-content: space-between;

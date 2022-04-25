@@ -6,9 +6,11 @@ var scores = Array(minimental.questions.length).fill(0)
 
 export default function Evaluation()
 {
+    const [show, setShow] = React.useState(false)
+
     const [qNum, setQNum] = React.useState(-1)
-    const prevQ = () => {setQNum(qNum - 1)}
-    const nextQ = () => {setQNum(qNum + 1)}
+    const prevQ = () => {setQNum(qNum - 1); setShow(false);}
+    const nextQ = () => {setQNum(qNum + 1); setShow(false);}
 
     // Suma de puntajes por categoria
     const sumScores = () => {
@@ -25,14 +27,28 @@ export default function Evaluation()
     const sendData = () => {
         alert("Puntajes enviados: " + sumScores() + "\nPor hacer: conectar a back-end")
     }
-
+    
     return (
         <div className="exam-info">
             {/* Examen */}
             {
                 qNum >= 0 &&
                 qNum < minimental.questions.length &&
-                <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />
+                (
+                    show ?
+                    minimental.questions[qNum].additional ?
+                    <>
+                        <p>En construcción.<br/>Por hacer: tomar datos adicionales para desplegar texto, imagenes y Unity</p>
+                        <button onClick={() => setShow(!show)}>Ocultar</button>
+                    </> :
+                    <></> :
+                    <>
+                        <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />
+                        <div>
+                            {minimental.questions[qNum].additional && <button onClick={() => setShow(!show)}>Mostrar</button>}
+                        </div>
+                    </>
+                )
             }
             {/* Pantalla previa */}
             {

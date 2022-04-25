@@ -1,0 +1,11 @@
+.GridLogin {
+
+    display: grid;
+    margin: auto;
+    grid-template-columns: auto;
+    width: 60%;
+    padding: 10px;
+    /* margin-left: 30%; */
+    /* margin-right: 30%; */
+
+}

@@ -1,0 +1,16 @@
+.GridInputBox {
+
+    text-align: left;
+    /* position:sticky; */
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 1.5em;
+    color: rgba(25, 29, 8, 0.8);
+    border-radius: 40px;
+    padding: 5%;
+    margin-top: 3%;
+    background-color: #E1E5C3;
+    border: none
+    
+}

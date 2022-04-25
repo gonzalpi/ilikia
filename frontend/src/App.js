@@ -3,13 +3,14 @@ import { InputBox } from './InputBox';
 import { WelcomeText } from './WelcomeText';
 import {GridLogin} from './GridLogin';
 import { Menu } from './menu';
+import {ErrorPage} from './ErrorPage'
 
 import {Evaluation} from './evaluation/Minimental';
 import {
 
   BrowserRouter as Router,
-  Switch,
   Route,
+  Routes,
   Link
 
 } from "react-router-dom";
@@ -18,28 +19,14 @@ function App() {
   return (
 
     <Router>
-      <React.Fragment>
-        <Switch>
+        <Routes>
 
+          <Route exact path="/" element = {<GridLogin/>} />
+          <Route exact path="/menu" element = {<Menu/>} />
+          <Route exact path="/examen" element = {<Evaluation/>} />
+          <Route path='*' element={<ErrorPage/>} />
 
-          <Route path="/examen">
-            
-            <Evaluation/>
-
-          </Route>
-
-          <Route path="/menu">
-            <Menu/>
-          </Route>
-
-          <Route path="/">
-            <GridLogin/>
-          </Route>
-
-
-
-        </Switch>
-      </React.Fragment>
+        </Routes>
     </Router>
     );
 }

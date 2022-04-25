@@ -76,3 +76,5 @@ export default function Evaluation()
         </div>
     )
 }
+
+export {Evaluation};

@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './GridLogin.css';
-import {GridInputBox} from './GridInputBox'
-import {WelcomeText} from './WelcomeText'
+import {GridInputBox} from './GridInputBox';
+import {WelcomeText} from './WelcomeText';
+import {useHistory} from "react-router-dom";
+
+class Login extends Component {
+
+    nextPath(path) {
+        this.props.history.push(path);
+    }
+
+}
 
 function GridLogin() {
+
+    const history = useHistory();
+    const menu = () => {
+        history.push("/menu")
+        window.location.reload();
+    }
 
     return (
 
@@ -43,7 +58,6 @@ function GridLogin() {
 
             }}/>
 
-
             <button style={{
 
                 backgroundColor: "#D7EC7C",
@@ -57,7 +71,7 @@ function GridLogin() {
                 fontSize: '1.5em',
                 border: "none"
 
-            }}>Iniciar sesión</button>
+            }} onClick= {menu} >Iniciar sesión</button>
 
         </div>
 
@@ -65,4 +79,4 @@ function GridLogin() {
 
 }
 
-export {GridLogin};
+export {GridLogin}

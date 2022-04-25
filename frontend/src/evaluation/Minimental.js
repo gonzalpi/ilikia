@@ -39,7 +39,7 @@ export default function Evaluation()
                 qNum === -1 &&
                 <>
                     <h1>{minimental.name}</h1>
-                    <p>A continuación se presentará una serie de instrucciones y preguntas que deberán hacerse al paciente.</p>
+                    <p className="instructions">A continuación se presentará una serie de instrucciones que deberá leer y posteriormente hacer la pregunta que está escrita en grande al paciente.</p>
                 </>
             }
             {/* Pantalla de envío de datos */}
@@ -47,31 +47,34 @@ export default function Evaluation()
                 qNum === minimental.questions.length &&
                 <>
                     <h1>{minimental.name}</h1>
-                    <p>Presione Enviar para finalizar.</p>
+                    <p className="instructions">Presione Enviar para finalizar.</p>
                 </>
             }
             {/* Botones de navegación */}
             <div className="nav-buttons">
                 <div>
-                    <button onClick={prevQ}>Atrás</button>
+                    {
+                        qNum >= 0 &&
+                        <button onClick={prevQ}>Atrás</button>
+                    }
                 </div>
                 <div>
                     {/* Botón de desarrollo: imprime puntajes e índice a consola */}
                     {/* <button onClick={printState}>(dev)Estado</button> */}
                 </div>
-                <div>
                 {
                     qNum < minimental.questions.length &&
-                    <button onClick={nextQ}>Continuar</button>
+                    <div>
+                        <button onClick={nextQ}>Continuar</button>
+                    </div>
                 }
-                </div>
                 {/* Botón de enviar datos disponible en última pantalla */}
-                <div>
                 {
                     qNum === minimental.questions.length &&
-                    <button onClick={sendData}>Enviar</button>
+                    <div>
+                        <button onClick={sendData}>Enviar</button>
+                    </div>
                 }
-                </div>
             </div>
         </div>
     )

@@ -2,23 +2,11 @@ import React, { Component } from 'react';
 import './GridLogin.css';
 import {GridInputBox} from './GridInputBox';
 import {WelcomeText} from './WelcomeText';
-import {useHistory} from "react-router-dom";
-
-class Login extends Component {
-
-    nextPath(path) {
-        this.props.history.push(path);
-    }
-
-}
+import {useNavigate} from "react-router-dom";
 
 function Menu() {
 
-    const history = useHistory();
-    const examen = () => {
-        history.push("/examen")
-        window.location.reload();
-    }
+    let navigate = useNavigate();
 
     return (
 
@@ -63,7 +51,11 @@ function Menu() {
             fontSize: '1.5em',
             border: "none"
 
-            }} onClick= {examen} >Minimental</button>
+            }} onClick= { () => {
+
+                navigate("/examen")
+
+            }} >Minimental </button>
             
             <br/>
 

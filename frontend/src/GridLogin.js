@@ -11,23 +11,33 @@ function GridLogin() {
     return (
 
         <div className='GridLogin'>
+
+            <h1 style={{
+
+                fontSize: "5em",
+                fontFamily: "Montserrat",
+                color: "#556500"
+
+
+            }}>Project Novela</h1>
+            {/* <WelcomeText/> */}
             
-            <WelcomeText/>
             <p style={{
 
                 fontFamily: 'Montserrat',
                 fontWeight: "700",
-                fontSize: "1.5em"
+                fontSize: "2em",
 
             }}>Usuario / Cédula</p>
             
             <GridInputBox/>
+
             <p style={{
 
                 marginTop: "5%",
                 fontFamily: 'Montserrat',
                 fontWeight: "700",
-                fontSize: "1.5em",
+                fontSize: "2em",
 
             }}>Contraseña</p>
 
@@ -36,7 +46,7 @@ function GridLogin() {
                 textAlign: "left",
                 fontFamily: 'Montserrat',
                 fontWeight: "700",
-                fontSize: "1.5em",
+                fontSize: "2em",
                 color: "rgba(25, 29, 8, 0.8)",
                 borderRadius: "40px",
                 padding: "5%",
@@ -49,14 +59,15 @@ function GridLogin() {
             <button style={{
 
                 backgroundColor: "#D7EC7C",
-                padding: "5%",
-                width: "50%", 
+                width: "50%",
+                height: "4.5em", 
                 margin: "auto",
                 marginTop: "8%",
                 borderRadius: "40px",
                 fontFamily: 'Montserrat',
                 fontWeight: '700',
-                fontSize: '1.5em',
+                fontSize: '2em',
+                textAlign: 'center',
                 border: "none"
 
             }} onClick= { () => {

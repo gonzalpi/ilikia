@@ -1,10 +1,12 @@
 .GridLogin {
 
-    display: grid;
-    margin: auto;
-    grid-template-columns: auto;
-    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 45%;
     padding: 10px;
+    justify-content: center;
+    /* align-items: center; */
     /* margin-left: 30%; */
     /* margin-right: 30%; */
 

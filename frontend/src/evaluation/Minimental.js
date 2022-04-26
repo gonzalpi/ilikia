@@ -4,7 +4,7 @@ import "./Minimental.css"
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(0)
 
-export default function Evaluation()
+export default function Minimental()
 {
     const [show, setShow] = React.useState(false)
 

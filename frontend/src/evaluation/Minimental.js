@@ -2,15 +2,19 @@ import React from "react";
 import DefaultQuestion from "./DefaultQuestion";
 import "./Minimental.css"
 const minimental = require("./minimental.json")
-var scores = Array(minimental.questions.length).fill(0)
+var scores = Array(minimental.questions.length).fill(-1)
 
 export default function Minimental()
 {
     const [show, setShow] = React.useState(false)
-
     const [qNum, setQNum] = React.useState(-1)
-    const prevQ = () => {setQNum(qNum - 1); setShow(false);}
-    const nextQ = () => {setQNum(qNum + 1); setShow(false);}
+    const [score, setScore] = React.useState(scores[qNum])
+    const prevQ = () => {setQNum(qNum - 1); setShow(false); setScore(scores[qNum]);}
+    const nextQ = () => {setQNum(qNum + 1); setShow(false); setScore(scores[qNum]);}
+    // const updateScore = () => {
+    //     setScore(scores[qNum])
+    //     console.log(scores)
+    // }
 
     // Suma de puntajes por categoria
     const sumScores = () => {
@@ -39,13 +43,26 @@ export default function Minimental()
                     minimental.questions[qNum].additional ?
                     <>
                         <p>En construcción.<br/>Por hacer: tomar datos adicionales para desplegar texto, imagenes y Unity</p>
-                        <button onClick={() => setShow(!show)}>Ocultar</button>
+                        <button
+                            onClick={() => setShow(!show)}>
+                                Ocultar
+                        </button>
                     </> :
                     <></> :
                     <>
-                        <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />
+                        <DefaultQuestion
+                            question={minimental.questions[qNum]}
+                            qNum={qNum}
+                            scores={scores}
+                        />
                         <div>
-                            {minimental.questions[qNum].additional && <button onClick={() => setShow(!show)}>Mostrar</button>}
+                            {
+                                minimental.questions[qNum].additional &&
+                                <button
+                                    onClick={() => setShow(!show)}>
+                                        Mostrar
+                                </button>
+                            }
                         </div>
                     </>
                 )
@@ -55,7 +72,9 @@ export default function Minimental()
                 qNum === -1 &&
                 <>
                     <h1>{minimental.name}</h1>
-                    <p className="instructions">A continuación se presentará una serie de instrucciones que deberá leer y posteriormente hacer la pregunta que está escrita en grande al paciente.</p>
+                    <p className="instructions">
+                        A continuación se presentará una serie de instrucciones que deberá leer y posteriormente hacer la pregunta que está escrita en grande al paciente.
+                    </p>
                 </>
             }
             {/* Pantalla de envío de datos */}
@@ -63,34 +82,42 @@ export default function Minimental()
                 qNum === minimental.questions.length &&
                 <>
                     <h1>{minimental.name}</h1>
-                    <p className="instructions">Presione Enviar para finalizar.</p>
+                    <p className="instructions">
+                        Presione Enviar para finalizar.
+                    </p>
                 </>
             }
             {/* Botones de navegación */}
             <div className="nav-buttons">
+                {/* Botón de Atrás */}
                 <div>
                     {
                         qNum >= 0 &&
-                        <button onClick={prevQ}>Atrás</button>
+                        <button onClick={prevQ}>
+                            Atrás
+                        </button>
                     }
                 </div>
+                {/* Botón de desarrollo: imprime puntajes e índice a consola */}
                 <div>
-                    {/* Botón de desarrollo: imprime puntajes e índice a consola */}
                     {/* <button onClick={printState}>(dev)Estado</button> */}
                 </div>
-                {
-                    qNum < minimental.questions.length &&
-                    <div>
-                        <button onClick={nextQ}>Continuar</button>
-                    </div>
-                }
+                {/* Botón de continuar a siguiente pregunta */}
+                <div>
+                    {
+                        qNum < minimental.questions.length &&
+                        <button onClick={nextQ}>
+                            Continuar
+                        </button>
+                    }
+                </div>
                 {/* Botón de enviar datos disponible en última pantalla */}
-                {
-                    qNum === minimental.questions.length &&
-                    <div>
+                <div>
+                    {
+                        qNum === minimental.questions.length &&
                         <button onClick={sendData}>Enviar</button>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     )

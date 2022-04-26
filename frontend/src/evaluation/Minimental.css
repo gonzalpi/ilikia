@@ -13,6 +13,10 @@
     margin: 40px;
 }
 
+.exam-name {
+    text-align: center;
+}
+
 .instructions {
     font-weight: 400;
     text-align: center;
@@ -25,11 +29,7 @@
     bottom: 0;
 }
 
-.nav-buttons > * {
-    margin: 10px;
-}
-
-button {
+.nav-button {
     background-color: #D7EC7C;
     width: 7em;
     height: 2em;
@@ -38,8 +38,9 @@ button {
     font-weight: 700;
     font-size: 1.5em;
     border: none;
+    margin: 10px;
 }
 
-button:active {
+.nav-button:active {
     background-color: #C7DC6C;
 }

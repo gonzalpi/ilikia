@@ -1,31 +1,41 @@
-import React from "react"
+import React, { useState } from "react"
 import "./DefaultQuestion.css"
 
-export default function DefaultQuestion({question, qNum, scores}) {
-    const [state, setState] = React.useState(true)
-    const reloadQuestion = () => {setState(!state);}
+export default function DefaultQuestion({question, qNum, scores, updateCallback}) {
+    const [score, setScore] = useState(scores[qNum])
+    const updateScore = (x) => {
+        setScore(x)
+        scores[qNum] = x
+        updateCallback()
+    }
+    function ScoreButtons(x) {
+        return (
+        <button
+            className={x === scores[qNum] ? "score-button-selected" : "score-button"}
+            onClick={() => updateScore(x)}
+        >
+            {x}
+        </button>
+        )
+    }
     return (
         <>
             <div className="question">
-                <p className="instructions">{question.note && <><b>{question.note}</b><br /></>} {question.instructions}</p>
-                <h1 className="question-text">{question.text}</h1>
+                <p className="instructions">
+                    {
+                        question.note &&
+                        <><b>{question.note}</b><br /></>
+                    } {
+                        question.instructions
+                    }
+                </p>
+                <h1 className="question-text">
+                    {question.text}
+                </h1>
             </div>
-            <div className="score-buttons">
+            <div id="score-buttons" className="score-buttons">
                 {
-                    question.scores.map(x => (
-                    <div><button
-                        className={x === scores[qNum] ? "score-button-selected" : "score-button"}
-                        onClick={() => {
-                            scores[qNum] = x
-                            reloadQuestion()
-                            // scores[qNum]=x; score=x; setScore(x);
-                            console.log(scores)
-                            console.log(scores[qNum])
-                        }}
-                        >
-                            {x}
-                    </button></div>
-                    ))
+                    question.scores.map(x => (<div>{ScoreButtons(x)}</div>))
                 }
             </div>
         </>

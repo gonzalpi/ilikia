@@ -22,10 +22,6 @@
     flex-wrap: wrap;
 }
 
-.score-buttons > * {
-    margin: 10px;
-}
-
 .score-button {
     background-color: #D7EC7C;
     width: 4em;
@@ -35,9 +31,10 @@
     font-weight: 700;
     font-size: 1.5em;
     border: none;
+    margin: 10px;
 }
 
-.score-buttons > div > button:active {
+.score-button:active {
     background-color: #C7DC6C;
 }
 
@@ -50,4 +47,5 @@
     font-weight: 700;
     font-size: 1.5em;
     border: none;
+    margin: 10px
 }

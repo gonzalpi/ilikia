@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import './GridLogin.css';
-import {GridInputBox} from './GridInputBox';
-import {WelcomeText} from './WelcomeText';
 import {useNavigate} from "react-router-dom";
 
 function Menu() {

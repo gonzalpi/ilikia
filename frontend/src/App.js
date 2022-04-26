@@ -1,7 +1,5 @@
 import React from 'react';
-import { InputBox } from './InputBox';
-import { WelcomeText } from './WelcomeText';
-import {GridLogin} from './GridLogin';
+import {GridLogin} from './loginScreen/GridLogin';
 import { Menu } from './menu';
 import {ErrorPage} from './ErrorPage'
 

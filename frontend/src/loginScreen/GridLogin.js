@@ -14,12 +14,12 @@ function GridLogin() {
 
             <h1 style={{
 
-                fontSize: "5em",
+                fontSize: "4em",
                 fontFamily: "Montserrat",
                 color: "#556500"
 
 
-            }}>Project Novela</h1>
+            }}>Ilikia</h1>
             {/* <WelcomeText/> */}
             
             <p style={{
@@ -32,7 +32,7 @@ function GridLogin() {
             
             <GridInputBox/>
 
-            <p style={{
+            {/* <p style={{
 
                 marginTop: "5%",
                 fontFamily: 'Montserrat',
@@ -54,7 +54,7 @@ function GridLogin() {
                 backgroundColor: "#E1E5C3",
                 border: "none"
 
-            }}/>
+            }}/> */}
 
             <button style={{
 
@@ -66,15 +66,17 @@ function GridLogin() {
                 borderRadius: "40px",
                 fontFamily: 'Montserrat',
                 fontWeight: '700',
-                fontSize: '2em',
+                fontSize: '1.3em',
                 textAlign: 'center',
-                border: "none"
+                border: "none",
+                color: "#3D4719",
+                cursor: "pointer"
 
             }} onClick= { () => {
                 
                 navigate("/menu")
 
-            }}> Iniciar sesión </button>
+            }}> Continuar </button>
 
         </div>
 

@@ -2,15 +2,14 @@
 
     text-align: left;
     /* position:sticky; */
-
+    color: rgb(25, 29, 8, 0.8);
     font-family: 'Montserrat';
     font-weight: 700;
     font-size: 2em;
-    color: rgba(25, 29, 8, 0.8);
     border-radius: 40px;
-    padding: 5%;
+    padding: 4%;
     margin-top: 3%;
     background-color: #E1E5C3;
-    border: none
+    border: none;
     
 }

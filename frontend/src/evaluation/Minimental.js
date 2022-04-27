@@ -15,7 +15,7 @@ export default function Minimental()
     const [score, setScore] = React.useState(scores[qNum])
     // const prevQ = () => {setQNum(qNum - 1); setShowContent(false); setScore(scores[qNum]);}
     // const nextQ = () => {setQNum(qNum + 1); setShowContent(false); setScore(scores[qNum]); setShowNext(false || scores[qNum] !== -1)}
-    const prevQ = () => {qNum -= 1; setShowContent(false); setScore(scores[qNum]);}
+    const prevQ = () => {qNum -= 1; setShowContent(false); setScore(scores[qNum]); setShowNext(true)}
     const nextQ = () => {qNum += 1; setShowContent(false); setScore(scores[qNum]); setShowNext(false || scores[qNum] !== -1)}
 
     const updateCallback = () => {

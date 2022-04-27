@@ -5,7 +5,7 @@ import {GridLogin} from './GridLogin';
 import { Menu } from './menu';
 import {ErrorPage} from './ErrorPage'
 
-import {Evaluation} from './evaluation/Minimental';
+import Minimental from './evaluation/Minimental';
 import {
 
   BrowserRouter as Router,
@@ -23,7 +23,7 @@ function App() {
 
           <Route exact path="/" element = {<GridLogin/>} />
           <Route exact path="/menu" element = {<Menu/>} />
-          <Route exact path="/examen" element = {<Evaluation/>} />
+          <Route exact path="/examen" element = {<Minimental/>} />
           <Route path='*' element={<ErrorPage/>} />
 
         </Routes>

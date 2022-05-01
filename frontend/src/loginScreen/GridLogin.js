@@ -3,6 +3,7 @@ import './GridLogin.css';
 import {GridInputBox} from './GridInputBox';
 import {WelcomeText} from './WelcomeText';
 import {useNavigate} from "react-router-dom";
+import logo from './ilikia.svg';
 
 function GridLogin() {
 
@@ -11,6 +12,8 @@ function GridLogin() {
     return (
 
         <div className='GridLogin'>
+            
+            {/* <img src={logo} width={"82"} height={"82"}/> */}
 
             <h1 style={{
 

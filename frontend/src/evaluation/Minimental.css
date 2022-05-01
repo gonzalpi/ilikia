@@ -24,7 +24,7 @@
     margin: 10px;
 }
 
-button {
+.buttonM {
     background-color: #D7EC7C;
     width: 7em;
     height: 2em;
@@ -35,6 +35,6 @@ button {
     border: none;
 }
 
-button:active {
+.buttonM:active {
     background-color: #C7DC6C;
 }

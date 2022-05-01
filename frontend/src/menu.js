@@ -46,7 +46,8 @@ function Menu() {
             fontFamily: 'Montserrat',
             fontWeight: '700',
             fontSize: '1.5em',
-            border: "none"
+            border: "none",
+            cursor: "pointer"
 
             }} onClick= { () => {
 

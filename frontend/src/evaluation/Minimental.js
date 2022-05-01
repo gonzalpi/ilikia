@@ -53,7 +53,7 @@ export default function Evaluation()
             {/* Botones de navegación */}
             <div className="nav-buttons">
                 <div>
-                    <button onClick={prevQ}>Atrás</button>
+                    <button onClick={prevQ} className = "buttonM">Atrás</button>
                 </div>
                 <div>
                     {/* Botón de desarrollo: imprime puntajes e índice a consola */}
@@ -62,14 +62,14 @@ export default function Evaluation()
                 <div>
                 {
                     qNum < minimental.questions.length &&
-                    <button onClick={nextQ}>Continuar</button>
+                    <button onClick={nextQ} className = "buttonM">Continuar</button>
                 }
                 </div>
                 {/* Botón de enviar datos disponible en última pantalla */}
                 <div>
                 {
                     qNum === minimental.questions.length &&
-                    <button onClick={sendData}>Enviar</button>
+                    <button onClick={sendData} className = "buttonM">Enviar</button>
                 }
                 </div>
             </div>

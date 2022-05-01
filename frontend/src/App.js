@@ -6,6 +6,7 @@ import {MainScreenAdmin} from './mainScreen/admin/MainScreenAdmin';
 import Blank from './Blank'
 import {ErrorPage} from './ErrorPage'
 import AppLayout from './layout/AppLayout'
+import { Settings } from './settings';
 
 import {Evaluation} from './evaluation/Minimental.js';
 import {
@@ -29,7 +30,8 @@ function App() {
           <Route path="/" element = {<AppLayout/>}>
 
 
-            <Route exact path="/menu" element = {<MainScreenAdmin/>} />
+            <Route path="/menu" element = {<MainScreenAdmin/>} />
+            <Route path="/config" element = {<Settings/>} />
             {/* <Route exact path="menu/examen" element = {<Blank/>} />
             <Route exact path="menu/mainAdmin" element = {<Blank/>} /> */}
 

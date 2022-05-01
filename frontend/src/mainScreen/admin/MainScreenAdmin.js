@@ -5,7 +5,16 @@ function MainScreenAdmin() {
   return (
     
     
-    <div>
+    <div style={{
+
+      margin: "0",
+      position: "absolute",
+      top: "50%",
+      left: "60%",
+      msTransform: "translate(-50%, -60%)",
+      transform: "translate(-50%, -60%)"
+
+    }}>
 
       <h1 className='h1'> Administrador </h1>
 

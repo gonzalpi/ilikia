@@ -13,8 +13,8 @@ const sidebarNavItems = [
     {
         display: 'Configuración',
         icon: <i className='bx bx-user'></i>,
-        to: 'menu/config',
-        section: 'menu/config'
+        to: '/config',
+        section: 'config'
     },
 
 ]

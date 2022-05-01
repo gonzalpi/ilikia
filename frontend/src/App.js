@@ -1,11 +1,13 @@
+import './App.css'
 import React from 'react';
-import { InputBox } from './InputBox';
-import { WelcomeText } from './WelcomeText';
-import {GridLogin} from './GridLogin';
+import {GridLogin} from './loginScreen/GridLogin';
 import { Menu } from './menu';
+import {MainScreenAdmin} from './mainScreen/admin/MainScreenAdmin';
+import Blank from './Blank'
 import {ErrorPage} from './ErrorPage'
+import AppLayout from './layout/AppLayout'
 
-import Minimental from './evaluation/Minimental';
+import {Evaluation} from './evaluation/Minimental.js';
 import {
 
   BrowserRouter as Router,
@@ -21,9 +23,21 @@ function App() {
     <Router>
         <Routes>
 
-          <Route exact path="/" element = {<GridLogin/>} />
-          <Route exact path="/menu" element = {<Menu/>} />
-          <Route exact path="/examen" element = {<Minimental/>} />
+
+          {/* <Route exact path='/' element = {<GridLogin />}/> // Raiz login screen */}
+
+          <Route path="/" element = {<AppLayout/>}>
+
+
+            <Route exact path="/menu" element = {<MainScreenAdmin/>} />
+            {/* <Route exact path="menu/examen" element = {<Blank/>} />
+            <Route exact path="menu/mainAdmin" element = {<Blank/>} /> */}
+
+
+          </Route>
+
+
+
           <Route path='*' element={<ErrorPage/>} />
 
         </Routes>

@@ -29,7 +29,11 @@
     bottom: 0;
 }
 
-.nav-button {
+.nav-buttons > * {
+    margin: 10px;
+}
+
+.buttonM {
     background-color: #D7EC7C;
     width: 7em;
     height: 2em;
@@ -41,6 +45,6 @@
     margin: 10px;
 }
 
-.nav-button:active {
+.buttonM:active {
     background-color: #C7DC6C;
 }

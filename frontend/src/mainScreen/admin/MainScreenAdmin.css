@@ -1,0 +1,51 @@
+.wrapper {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+
+}
+
+.gridScreen {
+
+    display: grid;
+    grid-template-columns: auto auto;
+    /* flex-direction: column; */
+    column-gap: 3em;
+    /* row-gap: 4em; */
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    /* align-items: center; */
+
+}
+
+.coolButton {
+
+    background-color: #E1E5C3;
+    padding: 0em 2em;
+    /* width: 10%; */
+    height: 4.5em;
+    margin: auto;
+    border-radius: 40px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 1.3em;
+    text-align: center;
+    word-wrap: break-word;
+    border: none;
+    color: #191D08;
+    cursor: pointer;
+
+}
+
+.h1 {
+
+    font-size: 3em;
+    font-family: 'Montserrat';
+    color: #556500;
+    text-align: center;
+
+}

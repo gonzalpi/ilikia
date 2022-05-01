@@ -82,41 +82,41 @@ export default function Minimental()
     return (
         <div className="exam-info">
             {/* Examen */}
-            <>
+            {
+                qNum >= 0 &&
+                qNum < minimental.questions.length &&
+                <DefaultQuestion question={minimental.questions[qNum]} qNum={qNum} scores={scores} />
+            }
+            {/* Pantalla previa */}
+            {
+                qNum === -1 &&
+                <>
+                    <h1>{minimental.name}</h1>
+                    <p>A continuación se presentará una serie de instrucciones y preguntas que deberán hacerse al paciente.</p>
+                </>
+            }
+            {/* Pantalla de envío de datos */}
+            {
+                qNum === minimental.questions.length &&
+                <>
+                    <h1>{minimental.name}</h1>
+                    <p>Presione Enviar para finalizar.</p>
+                </>
+            }
+            {/* Botones de navegación */}
+            <div className="nav-buttons">
+                <div>
+                    <button onClick={prevQ} className = "buttonM">Atrás</button>
+                </div>
+                <div>
+                    {/* Botón de desarrollo: imprime puntajes e índice a consola */}
+                    {/* <button onClick={printState}>(dev)Estado</button> */}
+                </div>
+                <div>
                 {
                     qNum >= 0 &&
                     qNum < minimental.questions.length &&
-                    (
-                        showContent ?
-                        minimental.questions[qNum].additional ?
-                        <>
-                            <p>En construcción.<br/>Por hacer: tomar datos adicionales para desplegar texto, imagenes y Unity</p>
-                            <button
-                                onClick={() => setShowContent(!showContent)}
-                            >
-                                Ocultar
-                            </button>
-                        </> :
-                        <></> :
-                        <>
-                            <DefaultQuestion
-                                question={minimental.questions[qNum]}
-                                qNum={qNum}
-                                scores={scores}
-                                updateCallback={updateCallback}
-                            />
-                            <div>
-                                {
-                                    minimental.questions[qNum].additional &&
-                                    <button
-                                        onClick={() => setShowContent(!showContent)}
-                                    >
-                                        Mostrar
-                                    </button>
-                                }
-                            </div>
-                        </>
-                    )
+                    <button onClick={nextQ} className = "buttonM">Continuar</button>
                 }
             </>
             {/* Pantalla previa */}
@@ -135,12 +135,7 @@ export default function Minimental()
             <>
                 {
                     qNum === minimental.questions.length &&
-                    <>
-                        <h1>{minimental.name}</h1>
-                        <p className="instructions">
-                            Presione Enviar para finalizar.
-                        </p>
-                    </>
+                    <button onClick={sendData} className = "buttonM">Enviar</button>
                 }
             </>
             {/* Botones de navegación */}

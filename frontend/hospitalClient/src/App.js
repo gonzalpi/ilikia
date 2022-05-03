@@ -2,7 +2,7 @@ import './App.css'
 import React from 'react';
 import {GridLogin} from './loginScreen/GridLogin';
 import { Menu } from './menu';
-import {MainScreenAdmin} from './mainScreen/admin/MainScreenAdmin';
+import {MainScreenAdmin} from './mainScreen/MainScreenAdmin';
 import Blank from './Blank'
 import {ErrorPage} from './ErrorPage'
 import AppLayout from './layout/AppLayout'
@@ -32,8 +32,6 @@ function App() {
 
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
-            {/* <Route exact path="menu/examen" element = {<Blank/>} />
-            <Route exact path="menu/mainAdmin" element = {<Blank/>} /> */}
 
 
           </Route>

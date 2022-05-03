@@ -12,7 +12,7 @@ import {
 
 function MainScreenAdmin() {
 
-  var names = [['Maria Eugenia Durán Cañedo','03-05-2022'],['Jesus Miguel Pérez Padilla', '03-04-2022'],['Lydia Delgado Uriarte','01-01-2022']] 
+  var names = [['Maria Eugenia Durán Cañedo','03-05-2022'],['Javier Sánchez Panduro', '03-04-2022'],['Jesus Miguel Pérez Padilla', '03-04-2022'],['Lydia Delgado Uriarte','01-01-2022']] 
   const items = []
 
   for (var i = 0; i < names.length; i++) {

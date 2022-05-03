@@ -1,0 +1,26 @@
+.containerExam {
+
+    margin: 0 auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.containerExam p {
+
+    color: black;
+    font-size: 1.5em;
+    font-family: Montserrat;
+
+}
+
+.score {
+
+    color: black;
+    font-size: 1.5em;
+    font-family: Montserrat;
+    text-align: right;
+    font-weight: bold;
+
+}

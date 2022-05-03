@@ -56,7 +56,8 @@ CREATE TABLE `examen` (
   `usuario_medico` varchar(10) NOT NULL,
   `tipo` int(11) NOT NULL,
   `total` int(11) DEFAULT NULL,
-  `resultado_categoria_id` int(11) DEFAULT NULL
+  `resultado_categoria_id` int(11) DEFAULT NULL,
+  `fecha` DATE DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,8 +92,8 @@ CREATE TABLE `paciente` (
 CREATE TABLE `personal_salud` (
   `usuario` varchar(10) NOT NULL,
   `cedula` varchar(8) DEFAULT NULL,
-  `correo_e` varchar(20) DEFAULT NULL,
-  `telefono` varchar(10) DEFAULT NULL,
+  `correo_e` varchar(256) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
   `rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -114,7 +115,7 @@ CREATE TABLE `pertenece` (
 --
 
 CREATE TABLE `resultado_por_categoria` (
-  `resultado_categoria_id` int(11) NOT NULL,
+  `resultado_categoria_id` int(11) NOT NULL AUTO_INCREMENT,
   `categoria_1` int(11) DEFAULT NULL,
   `categoria_2` int(11) DEFAULT NULL,
   `categoria_3` int(11) DEFAULT NULL,
@@ -146,7 +147,7 @@ CREATE TABLE `rol` (
 
 CREATE TABLE `tipo_de_examen` (
   `tipo` int(11) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL
+  `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

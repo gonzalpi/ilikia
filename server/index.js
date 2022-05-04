@@ -1,6 +1,6 @@
 // server/index.js
 
-// const express = require("express");
+const express = require("express");
 const mysql = require("mysql2");
 // const path = require("path");
 
@@ -19,10 +19,13 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
-con.query(
-    "SHOW TABLES;",
-    (err, results, fields) => console.log(results)
-)
-
-// const app = express()
+const app = express()
 // app.use(express.static(path.resolve(__dirname, '../frontend/hospitalClient/build')));
+
+// app.get("/api/exams", (req, res) => {
+//     con.query (
+//         "SELECT * FROM examen"
+//     )
+// });
+
+app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

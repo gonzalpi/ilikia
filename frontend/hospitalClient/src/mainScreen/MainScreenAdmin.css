@@ -9,8 +9,8 @@
 
 .gridScreen {
 
-    display: flex;
-    grid-template-columns: auto auto;
+    /* display: flex; */
+    grid-template-columns: auto;
     column-gap: 2em;
     /* row-gap: 4em; */
     margin: 0 auto;
@@ -45,5 +45,20 @@
     font-family: 'Montserrat';
     color: #556500;
     text-align: center;
+
+}
+
+.elemento {
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    cursor: pointer;
+    background-color: #E1E5C3;
+    border-radius: 40px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 1%;
 
 }

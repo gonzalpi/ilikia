@@ -24,141 +24,152 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Administrador`
+-- Estructura de tabla para la tabla `administrador`
 --
 
-CREATE TABLE `Administrador` (
+CREATE TABLE `administrador` (
   `usuario` varchar(10) NOT NULL,
-  `idInstitucion` varchar(10) DEFAULT NULL,
+  `id_institucion` varchar(10) DEFAULT NULL,
   `clave` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Atiende`
+-- Estructura de tabla para la tabla `atiende`
 --
 
-CREATE TABLE `Atiende` (
-  `usuarioPersonal` varchar(10) DEFAULT NULL,
-  `usuarioPaciente` varchar(10) DEFAULT NULL
+CREATE TABLE `atiende` (
+  `usuario_personal` varchar(10) DEFAULT NULL,
+  `usuario_paciente` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Examen`
+-- Estructura de tabla para la tabla `examen`
 --
 
-CREATE TABLE `Examen` (
-  `usuarioPersonal` varchar(10) NOT NULL,
-  `usuarioPaciente` varchar(10) NOT NULL,
-  `usuarioMedico` varchar(10) NOT NULL,
+CREATE TABLE `examen` (
+  `id_examen` int(11) NOT NULL,
+  `usuario_personal` varchar(10) NOT NULL,
+  `usuario_paciente` varchar(10) NOT NULL,
+  `usuario_medico` varchar(10) NOT NULL,
   `tipo` int(11) NOT NULL,
+  `fecha` DATE DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `resultadoCategoriaID` int(11) DEFAULT NULL
+  `cat_1` int(11) DEFAULT NULL,
+  `cat_2` int(11) DEFAULT NULL,
+  `cat_3` int(11) DEFAULT NULL,
+  `cat_4` int(11) DEFAULT NULL,
+  `cat_5` int(11) DEFAULT NULL,
+  `cat_6` int(11) DEFAULT NULL,
+  `cat_7` int(11) DEFAULT NULL,
+  `cat_8` int(11) DEFAULT NULL,
+  `cat_9` int(11) DEFAULT NULL,
+  `cat_10` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Institucion`
+-- Estructura de tabla para la tabla `institucion`
 --
 
-CREATE TABLE `Institucion` (
-  `idInstitucion` varchar(10) NOT NULL,
+CREATE TABLE `institucion` (
+  `id_institucion` varchar(10) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Paciente`
+-- Estructura de tabla para la tabla `paciente`
 --
 
-CREATE TABLE `Paciente` (
+CREATE TABLE `paciente` (
   `usuario` varchar(10) NOT NULL,
-  `idInstitucion` varchar(10) DEFAULT NULL,
-  `cuidadorPrincipal` varchar(30) DEFAULT NULL
+  `id_institucion` varchar(10) DEFAULT NULL,
+  `cuidador_principal` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PersonalSalud`
+-- Estructura de tabla para la tabla `personal_salud`
 --
 
-CREATE TABLE `PersonalSalud` (
+CREATE TABLE `personal_salud` (
   `usuario` varchar(10) NOT NULL,
   `cedula` varchar(8) DEFAULT NULL,
-  `correoElectronico` varchar(20) DEFAULT NULL,
-  `telefono` varchar(10) DEFAULT NULL,
-  `roles` int(11) DEFAULT NULL
+  `correo_e` varchar(256) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Pertenece`
+-- Estructura de tabla para la tabla `pertenece`
 --
 
-CREATE TABLE `Pertenece` (
-  `usuarioPersonal` varchar(10) DEFAULT NULL,
-  `idInstitucion` varchar(10) DEFAULT NULL
+CREATE TABLE `pertenece` (
+  `usuario_personal` varchar(10) DEFAULT NULL,
+  `id_institucion` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ResultadoPorCategoria`
+-- Estructura de tabla para la tabla `resultado_por_categoria`
 --
 
-CREATE TABLE `ResultadoPorCategoria` (
-  `resultadoCategoriaID` int(11) NOT NULL,
-  `categoria1` int(11) DEFAULT NULL,
-  `categoria2` int(11) DEFAULT NULL,
-  `categoria3` int(11) DEFAULT NULL,
-  `categoria4` int(11) DEFAULT NULL,
-  `categoria5` int(11) DEFAULT NULL,
-  `categoria6` int(11) DEFAULT NULL,
-  `categoria7` int(11) DEFAULT NULL,
-  `categoria8` int(11) DEFAULT NULL,
-  `categoria9` int(11) DEFAULT NULL,
-  `categoria10` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- CREATE TABLE `resultado_por_categoria` (
+--   `resultado_categoria_id` int(11) NOT NULL AUTO_INCREMENT,
+--   `categoria_1` int(11) DEFAULT NULL,
+--   `categoria_2` int(11) DEFAULT NULL,
+--   `categoria_3` int(11) DEFAULT NULL,
+--   `categoria_4` int(11) DEFAULT NULL,
+--   `categoria_5` int(11) DEFAULT NULL,
+--   `categoria_6` int(11) DEFAULT NULL,
+--   `categoria_7` int(11) DEFAULT NULL,
+--   `categoria_8` int(11) DEFAULT NULL,
+--   `categoria_9` int(11) DEFAULT NULL,
+--   `categoria_10` int(11) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Roles`
+-- Estructura de tabla para la tabla `rol`
 --
 
-CREATE TABLE `Roles` (
-  `roles` int(11) NOT NULL,
+CREATE TABLE `rol` (
+  `rol` int(11) NOT NULL,
   `tipo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TipoDeExamen`
+-- Estructura de tabla para la tabla `tipo_de_examen`
 --
 
-CREATE TABLE `TipoDeExamen` (
+CREATE TABLE `tipo_de_examen` (
   `tipo` int(11) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL
+  `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `Usuario` (
+CREATE TABLE `usuario` (
   `usuario` varchar(10) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
-  `fechaDeNacimiento` date DEFAULT NULL
+  `fecha_nacimiento` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -166,78 +177,84 @@ CREATE TABLE `Usuario` (
 --
 
 --
--- Indices de la tabla `Administrador`
+-- Indices de la tabla `administrador`
 --
-ALTER TABLE `Administrador`
+ALTER TABLE `administrador`
   ADD PRIMARY KEY (`usuario`),
-  ADD KEY `idInstitucion` (`idInstitucion`);
+  ADD KEY `id_institucion` (`id_institucion`);
 
 --
--- Indices de la tabla `Atiende`
+-- Indices de la tabla `atiende`
 --
-ALTER TABLE `Atiende`
-  ADD KEY `usuarioPaciente` (`usuarioPaciente`),
-  ADD KEY `usuarioPersonal` (`usuarioPersonal`);
+ALTER TABLE `atiende`
+  ADD KEY `usuario_paciente` (`usuario_paciente`),
+  ADD KEY `usuario_personal` (`usuario_personal`);
 
 --
--- Indices de la tabla `Examen`
+-- Indices de la tabla `examen`
 --
-ALTER TABLE `Examen`
-  ADD PRIMARY KEY (`usuarioPersonal`,`usuarioPaciente`,`usuarioMedico`,`tipo`),
-  ADD KEY `usuarioPaciente` (`usuarioPaciente`),
-  ADD KEY `usuarioMedico` (`usuarioMedico`),
-  ADD KEY `tipo` (`tipo`),
-  ADD KEY `resultadoCategoriaID` (`resultadoCategoriaID`);
+-- ALTER TABLE users ADD id int NOT NULL AUTO_INCREMENT primary key
+ALTER TABLE `examen`
+  MODIFY id_examen INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE `examen`
+  -- ADD PRIMARY KEY (`usuario_personal`,`usuario_paciente`,`usuario_medico`,`tipo`),
+  -- ADD PRIMARY KEY (`id_examen`),
+  ADD KEY `usuario_personal` (`usuario_personal`),
+  ADD KEY `usuario_paciente` (`usuario_paciente`),
+  ADD KEY `usuario_medico` (`usuario_medico`),
+  ADD KEY `tipo` (`tipo`);
+  -- ADD KEY `resultado_categoria_id` (`resultado_categoria_id`);
 
 --
--- Indices de la tabla `Institucion`
+-- Indices de la tabla `institucion`
 --
-ALTER TABLE `Institucion`
-  ADD PRIMARY KEY (`idInstitucion`);
+ALTER TABLE `institucion`
+  ADD PRIMARY KEY (`id_institucion`);
 
 --
--- Indices de la tabla `Paciente`
+-- Indices de la tabla `paciente`
 --
-ALTER TABLE `Paciente`
+ALTER TABLE `paciente`
   ADD PRIMARY KEY (`usuario`),
-  ADD KEY `idInstitucion` (`idInstitucion`);
+  ADD KEY `id_institucion` (`id_institucion`);
 
 --
--- Indices de la tabla `PersonalSalud`
+-- Indices de la tabla `personal_salud`
 --
-ALTER TABLE `PersonalSalud`
+ALTER TABLE `personal_salud`
   ADD PRIMARY KEY (`usuario`),
-  ADD KEY `roles` (`roles`);
+  ADD KEY `rol` (`rol`);
 
 --
--- Indices de la tabla `Pertenece`
+-- Indices de la tabla `pertenece`
 --
-ALTER TABLE `Pertenece`
-  ADD KEY `idInstitucion` (`idInstitucion`),
-  ADD KEY `usuarioPersonal` (`usuarioPersonal`);
+ALTER TABLE `pertenece`
+  ADD KEY `id_institucion` (`id_institucion`),
+  ADD KEY `usuario_personal` (`usuario_personal`);
 
 --
--- Indices de la tabla `ResultadoPorCategoria`
+-- Indices de la tabla `resultado_por_categoria`
 --
-ALTER TABLE `ResultadoPorCategoria`
-  ADD PRIMARY KEY (`resultadoCategoriaID`);
+-- ALTER TABLE `resultado_por_categoria`
+--   ADD PRIMARY KEY (`resultado_categoria_id`);
 
 --
--- Indices de la tabla `Roles`
+-- Indices de la tabla `rol`
 --
-ALTER TABLE `Roles`
-  ADD PRIMARY KEY (`roles`);
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`rol`);
 
 --
--- Indices de la tabla `TipoDeExamen`
+-- Indices de la tabla `tipo_de_examen`
 --
-ALTER TABLE `TipoDeExamen`
+ALTER TABLE `tipo_de_examen`
   ADD PRIMARY KEY (`tipo`);
 
 --
--- Indices de la tabla `Usuario`
+-- Indices de la tabla `usuario`
 --
-ALTER TABLE `Usuario`
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`usuario`);
 
 --
@@ -245,49 +262,49 @@ ALTER TABLE `Usuario`
 --
 
 --
--- Filtros para la tabla `Administrador`
+-- Filtros para la tabla `administrador`
 --
-ALTER TABLE `Administrador`
-  ADD CONSTRAINT `Administrador_ibfk_1` FOREIGN KEY (`idInstitucion`) REFERENCES `Institucion` (`idInstitucion`),
-  ADD CONSTRAINT `Administrador_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`usuario`);
+ALTER TABLE `administrador`
+  ADD CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_institucion`) REFERENCES `institucion` (`id_institucion`),
+  ADD CONSTRAINT `administrador_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 
 --
--- Filtros para la tabla `Atiende`
+-- Filtros para la tabla `atiende`
 --
-ALTER TABLE `Atiende`
-  ADD CONSTRAINT `Atiende_ibfk_1` FOREIGN KEY (`usuarioPaciente`) REFERENCES `Paciente` (`usuario`),
-  ADD CONSTRAINT `Atiende_ibfk_2` FOREIGN KEY (`usuarioPersonal`) REFERENCES `PersonalSalud` (`usuario`);
+ALTER TABLE `atiende`
+  ADD CONSTRAINT `atiende_ibfk_1` FOREIGN KEY (`usuario_paciente`) REFERENCES `paciente` (`usuario`),
+  ADD CONSTRAINT `atiende_ibfk_2` FOREIGN KEY (`usuario_personal`) REFERENCES `personal_salud` (`usuario`);
 
 --
--- Filtros para la tabla `Examen`
+-- Filtros para la tabla `examen`
 --
-ALTER TABLE `Examen`
-  ADD CONSTRAINT `Examen_ibfk_1` FOREIGN KEY (`usuarioPaciente`) REFERENCES `Paciente` (`usuario`),
-  ADD CONSTRAINT `Examen_ibfk_2` FOREIGN KEY (`usuarioPersonal`) REFERENCES `PersonalSalud` (`usuario`),
-  ADD CONSTRAINT `Examen_ibfk_3` FOREIGN KEY (`usuarioMedico`) REFERENCES `PersonalSalud` (`usuario`),
-  ADD CONSTRAINT `Examen_ibfk_4` FOREIGN KEY (`tipo`) REFERENCES `TipoDeExamen` (`tipo`),
-  ADD CONSTRAINT `Examen_ibfk_5` FOREIGN KEY (`resultadoCategoriaID`) REFERENCES `ResultadoPorCategoria` (`resultadoCategoriaID`);
+ALTER TABLE `examen`
+  ADD CONSTRAINT `examen_ibfk_1` FOREIGN KEY (`usuario_paciente`) REFERENCES `paciente` (`usuario`),
+  ADD CONSTRAINT `examen_ibfk_2` FOREIGN KEY (`usuario_personal`) REFERENCES `personal_salud` (`usuario`),
+  ADD CONSTRAINT `examen_ibfk_3` FOREIGN KEY (`usuario_medico`) REFERENCES `personal_salud` (`usuario`),
+  ADD CONSTRAINT `examen_ibfk_4` FOREIGN KEY (`tipo`) REFERENCES `tipo_de_examen` (`tipo`);
+  -- ADD CONSTRAINT `examen_ibfk_5` FOREIGN KEY (`resultado_categoria_id`) REFERENCES `resultado_por_categoria` (`resultado_categoria_id`);
 
 --
--- Filtros para la tabla `Paciente`
+-- Filtros para la tabla `paciente`
 --
-ALTER TABLE `Paciente`
-  ADD CONSTRAINT `Paciente_ibfk_1` FOREIGN KEY (`idInstitucion`) REFERENCES `Institucion` (`idInstitucion`),
-  ADD CONSTRAINT `Paciente_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`usuario`);
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_institucion`) REFERENCES `institucion` (`id_institucion`),
+  ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 
 --
--- Filtros para la tabla `PersonalSalud`
+-- Filtros para la tabla `personal_salud`
 --
-ALTER TABLE `PersonalSalud`
-  ADD CONSTRAINT `PersonalSalud_ibfk_1` FOREIGN KEY (`roles`) REFERENCES `Roles` (`roles`),
-  ADD CONSTRAINT `PersonalSalud_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`usuario`);
+ALTER TABLE `personal_salud`
+  ADD CONSTRAINT `personal_salud_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`rol`),
+  ADD CONSTRAINT `personal_salud_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 
 --
--- Filtros para la tabla `Pertenece`
+-- Filtros para la tabla `pertenece`
 --
-ALTER TABLE `Pertenece`
-  ADD CONSTRAINT `Pertenece_ibfk_1` FOREIGN KEY (`idInstitucion`) REFERENCES `Institucion` (`idInstitucion`),
-  ADD CONSTRAINT `Pertenece_ibfk_2` FOREIGN KEY (`usuarioPersonal`) REFERENCES `PersonalSalud` (`usuario`);
+ALTER TABLE `pertenece`
+  ADD CONSTRAINT `pertenece_ibfk_1` FOREIGN KEY (`id_institucion`) REFERENCES `institucion` (`id_institucion`),
+  ADD CONSTRAINT `pertenece_ibfk_2` FOREIGN KEY (`usuario_personal`) REFERENCES `personal_salud` (`usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

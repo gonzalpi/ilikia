@@ -1,12 +1,10 @@
 import './App.css'
 import React from 'react';
-import {GridLogin} from './loginScreen/GridLogin';
-import { Menu } from './menu';
-import {MainScreenAdmin} from './mainScreen/admin/MainScreenAdmin';
-import Blank from './Blank'
+import {MainScreenAdmin} from './mainScreen/MainScreenAdmin';
 import {ErrorPage} from './ErrorPage'
 import AppLayout from './layout/AppLayout'
 import { Settings } from './settings';
+import { ExamenResultados } from './mainScreen/examenResultados';
 
 import {Evaluation} from './evaluation/Minimental.js';
 import {
@@ -32,8 +30,7 @@ function App() {
 
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
-            {/* <Route exact path="menu/examen" element = {<Blank/>} />
-            <Route exact path="menu/mainAdmin" element = {<Blank/>} /> */}
+            <Route path='menu/examenRes/:id' element = {<ExamenResultados/>} />
 
 
           </Route>

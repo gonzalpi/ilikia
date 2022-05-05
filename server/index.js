@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 3001;
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "root",
     database: "ilikia",
-    socketPath: "/var/lib/mysql/mysql.sock"
+    // socketPath: "/var/lib/mysql/mysql.sock"
 });
 
 con.connect(function(err) {

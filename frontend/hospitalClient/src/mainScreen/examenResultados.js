@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './examenResultados.css'
 
@@ -12,9 +12,27 @@ function Score(props) {
 
 }
 
-function ExamenResultados() {
+function ExamenResultados(props) {
     
     let {id} = useParams()
+
+    var nombrePaciente;
+    var nombreDoctor;
+    var nombrePersonalDeSalud;
+
+    const [exam, setExam] = useState(null);
+    useEffect(() => {
+
+      fetch("/api/exam?id=" + id)
+        .then(res => res.json())
+        .then(data => {
+
+          setExam(data[0])
+          console.log(data[0])
+
+        })
+
+    }, []);
 
   return (
 
@@ -25,7 +43,7 @@ width: "75%"
 
 }}>
 
-<h1 className='h1'> {id} </h1>
+<h1 className='h1'> {"Maru"} </h1>
 
   <div className='containerExam'>
     

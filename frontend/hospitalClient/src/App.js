@@ -33,7 +33,7 @@ function App() {
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
             <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} />
-            <Route path='examenesPacientes/examenResultados/:id' element = {<ExamenResultados/>} />
+            <Route path='menu/examenesPacientes/:id/examenResultados/:id' element = {<ExamenResultados/>} />
 
 
           </Route>

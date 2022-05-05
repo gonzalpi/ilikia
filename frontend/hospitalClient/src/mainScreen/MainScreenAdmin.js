@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainScreenAdmin.css';
 import { Elemento } from './elemento/Elemento';
+import { ElementoEX } from './elemento/Elemento';
 import Sidebar from '../sidebar/Sidebar';
 import {
 
@@ -26,14 +27,13 @@ function MainScreenAdmin() {
   }
 
   return (
-
+    
     <div style={{
 
       margin: "0 auto",
-      width: "75%"
+      width: "70%"
 
     }}>
-
       <h1 className='h1'> Exámenes recientes </h1>
 
         <div>

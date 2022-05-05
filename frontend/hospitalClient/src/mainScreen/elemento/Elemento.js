@@ -1,14 +1,40 @@
 import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
+function ElementoEX(props) {
+
+  let navigate = useNavigate()
+  let link = "examenResultados/" + props.nombre
+
+  var header = props.nombre
+
+  return (
+
+    <div className='elemento' onClick={ () => {
+
+      navigate(link)
+
+    }
+    
+    }>
+
+        <p>{header}</p>
+        <p style={{fontWeight: "500"}}>{props.fecha}</p>
+
+    </div>
+
+  )
+
+}
+
 function Elemento(props) {
 
   let navigate = useNavigate()
-
   let link = "examenesPacientes/" + props.nombre
-  console.log(props.nombre)
-  console.log(props.id)
+  // console.log(props.nombre)
+  // console.log(props.id)
   
+  var header = props.nombre
 
   return (
 
@@ -20,7 +46,7 @@ function Elemento(props) {
 
     }>
 
-        <p>{props.nombre}</p>
+        <p>{header}</p>
         <p style={{fontWeight: "500"}}>{props.fecha}</p>
 
     </div>
@@ -28,3 +54,4 @@ function Elemento(props) {
 }
 
 export {Elemento}
+export {ElementoEX}

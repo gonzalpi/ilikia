@@ -2,6 +2,7 @@ import React from 'react';
 import './MainScreenAdmin.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Elemento } from './elemento/Elemento';
+import { ElementoEX } from './elemento/Elemento';
 import {
 
     BrowserRouter as Router,
@@ -20,10 +21,10 @@ function ExamenesPacientes(props) {
   
     for (var i = 0; i < names.length; i++) {
   
-      var nombrePaciente = names[i][0]
+      var idEx = names[i][0]
       var fechaExamen = names[i][1]
       
-      items.push(<Elemento nombre={nombrePaciente} fecha = {fechaExamen}/>)
+      items.push(<ElementoEX nombre={idEx} fecha = {fechaExamen}/>)
   
     }
 

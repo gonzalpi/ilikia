@@ -26,35 +26,24 @@ const app = express()
 app.get("/api/exam", (req, res) =>
 {
     let query = "SELECT * FROM examen";
-    let first = true;
-    if (req.query.id ||
-        req.query.personal ||
-        req.query.paciente ||
-        req.query.medico)
-        query += " WHERE";
+    if (req.query.id || req.query.personal ||
+        req.query.paciente || req.query.medico)
+        query += " WHERE 1";
     if (req.query.id)
     {
-        if (!first) query += " AND";
-        first = false;
-        query += ` id_examen=${req.query.id}`;
+        query += ` AND id_examen=${req.query.id}`;
     }
     if (req.query.personal)
     {
-        if (!first) query += " AND";
-        first = false;
-        query += ` usuario_personal='${req.query.personal}'`;
+        query += ` AND usuario_personal='${req.query.personal}'`;
     }
     if (req.query.paciente)
     {
-        if (!first) query += " AND";
-        first = false;
-        query += ` usuario_paciente='${req.query.paciente}'`;
+        query += ` AND usuario_paciente='${req.query.paciente}'`;
     }
     if (req.query.medico)
     {
-        if (!first) query += " AND";
-        first = false;
-        query += ` usuario_medico='${req.query.medico}'`;
+        query += ` AND usuario_medico='${req.query.medico}'`;
     }
     query += ";";
     console.log(query);
@@ -66,7 +55,7 @@ app.get("/api/exam", (req, res) =>
             res.send(err) :
             res.send(results);
         }
-    )
+    );
 });
 
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

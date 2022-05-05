@@ -46,15 +46,12 @@ app.get("/api/exam", (req, res) =>
             ` AND usuario_medico='${req.query.medico}'` : "")
         + ";";
     console.log(query);
-    con.query(
-        query,
-        (err, results, fields) =>
-        {
-            err ?
-            res.send(err) :
-            res.send(results);
-        }
-    );
+    con.query(query, (err, results, fields) =>
+    {
+        err ?
+        res.send(err) :
+        res.send(results);
+    });
 });
 
 /*
@@ -94,6 +91,18 @@ app.post("/api/exam", (req, res) =>
         }
         query += ");"
         console.log(query);
+        con.query(query, (err, results, fields) =>
+        {
+            err ?
+            res.send(err) :
+            {};
+        });
+        con.query("SELECT LAST_INSERT_ID();", (err, results, fields) =>
+        {
+            err ? 
+            res.send(err) :
+            res.send(results);
+        });
     }
     else
     {

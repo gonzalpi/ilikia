@@ -6,7 +6,7 @@ const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
-export default function Minimental()
+export default function Minimental({personal, paciente, medico, tipo}) // tipo = 1 para minimental
 {
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)

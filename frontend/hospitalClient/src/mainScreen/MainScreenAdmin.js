@@ -22,7 +22,8 @@ function MainScreenAdmin() {
           setExams(data.map(x => <Elemento
             key={x.id_examen}
             nombre={x.nombre_paciente}
-            fecha={x.fecha.slice(0, 10)}/>
+            fecha={x.fecha.slice(0, 10)}
+            idExam = {x.id_examen}/>
           ));
         });
         console.log(exams);

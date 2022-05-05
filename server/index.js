@@ -32,7 +32,8 @@ localhost:3001/api/exam
 */
 app.get("/api/exam", (req, res) =>
 {
-    let query = "SELECT *, usuario.nombre AS nombre_paciente FROM examen JOIN usuario ON examen.usuario_paciente = usuario.usuario"
+    let query_paciente = "SELECT examen.*, usuario.nombre AS nombre_paciente FROM examen"
+        + " JOIN usuario ON examen.usuario_paciente = usuario.usuario"
         + (req.query.id || req.query.personal ||
         req.query.paciente || req.query.medico ?
             " WHERE 1" : "")
@@ -44,7 +45,14 @@ app.get("/api/exam", (req, res) =>
             ` AND usuario_paciente='${req.query.paciente}'` : "")
         + (req.query.medico ?
             ` AND usuario_medico='${req.query.medico}'` : "")
-        + ";";
+        // + ";";
+    let query_personal = "SELECT paciente.*, usuario.nombre AS nombre_personal FROM ("
+        + query_paciente + ") paciente"
+        + " JOIN usuario ON paciente.usuario_personal = usuario.usuario"
+    let query_medico = "SELECT personal.*, usuario.nombre AS nombre_medico FROM ("
+    + query_personal + ") personal"
+    + " JOIN usuario ON personal.usuario_medico = usuario.usuario"
+    query = query_medico + ";";
     console.log(query);
     con.query(query, (err, results, fields) =>
     {

@@ -19,9 +19,11 @@ function MainScreenAdmin() {
       .then(res => res.json())
       .then(data =>
         {
-          setExams(data.map(x => <Elemento key={x.id_examen} nombre={
-            x.nombre_paciente
-          } fecha={x.fecha.slice(0, 10)} idExam = {x.id_examen}/>));
+          setExams(data.map(x => <Elemento
+            key={x.id_examen}
+            nombre={x.nombre_paciente}
+            fecha={x.fecha.slice(0, 10)}/>
+          ));
         });
         console.log(exams);
     }, []);

@@ -55,6 +55,28 @@ app.get("/api/exam", (req, res) =>
 });
 
 /*
+localhost:3001/api/name
+// PARÁMETROS COMPULSORIOS
+    usuario=aaa
+*/
+app.get("/api/name", (req, res) =>
+{
+    if (req.query.usuario)
+    {
+        con.query(
+            `SELECT nombre FROM usuario WHERE usuario.usuario = '${req.query.usuario}';`,
+            (err, results, fields) => err ? res.send(err) : res.send(results)
+        )
+        let query = `SELECT nombre FROM usuario WHERE usuario.usuario = ${req.query.usuario};`
+    }
+    else
+    {
+        res.status(400);
+        res.send("Error: Solicitud incompleta")
+    }
+});
+
+/*
 localhost:3001/api/exam
 // PARÁMETROS COMPULSORIOS
     personal=aaa
@@ -107,7 +129,7 @@ app.post("/api/exam", (req, res) =>
     else
     {
         res.status(400);
-        res.send("Error: Los datos están incompletos.")
+        res.send("Error: Solicitud incompleta")
     }
 });
 

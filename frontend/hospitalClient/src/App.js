@@ -29,7 +29,6 @@ function App() {
           <Route path="/" element = {<AppLayout/>}>
 
   
-            {/* <Route path="/menu" element = {<ExamenesPacientes/>} />  */}
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
             <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} />

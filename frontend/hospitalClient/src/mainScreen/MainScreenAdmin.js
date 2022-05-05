@@ -1,7 +1,6 @@
 import React from 'react';
 import './MainScreenAdmin.css';
-import { Elemento } from './elemento/Elemento';
-import { ElementoEX } from './elemento/Elemento';
+import { Elemento, ElementoEX } from './elemento/Elemento';
 import Sidebar from '../sidebar/Sidebar';
 import {
 

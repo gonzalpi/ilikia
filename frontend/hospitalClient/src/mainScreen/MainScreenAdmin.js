@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainScreenAdmin.css';
 import { Elemento } from './elemento/Elemento';
+import Sidebar from '../sidebar/Sidebar';
 import {
 
   BrowserRouter as Router,
@@ -25,8 +26,7 @@ function MainScreenAdmin() {
   }
 
   return (
-    
-    
+
     <div style={{
 
       margin: "0 auto",

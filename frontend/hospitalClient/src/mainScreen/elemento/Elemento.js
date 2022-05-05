@@ -4,7 +4,11 @@ import { Navigate, useNavigate } from 'react-router-dom'
 function Elemento(props) {
 
   let navigate = useNavigate()
-  let link = "examenRes/" + props.nombre
+
+  let link = "examenesPacientes/" + props.nombre
+  console.log(props.nombre)
+  console.log(props.id)
+  
 
   return (
 
@@ -13,8 +17,6 @@ function Elemento(props) {
       navigate(link)
 
     }
-
-
 
     }>
 

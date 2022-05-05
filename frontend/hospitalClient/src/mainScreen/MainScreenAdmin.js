@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MainScreenAdmin.css';
 import { Elemento, ElementoEX } from './elemento/Elemento';
 import Sidebar from '../sidebar/Sidebar';
@@ -12,18 +12,22 @@ import {
 } from "react-router-dom";
 
 function MainScreenAdmin() {
-
-  var names = [['Maria Eugenia Durán Cañedo','03-05-2022'],['Javier Sánchez Panduro', '03-04-2022'],['Jesus Miguel Pérez Padilla', '03-04-2022'],['Lydia Delgado Uriarte','01-01-2022']] 
-  const items = []
-
-  for (var i = 0; i < names.length; i++) {
-
-    var nombrePaciente = names[i][0]
-    var fechaExamen = names[i][1]
-    
-    items.push(<Elemento nombre={nombrePaciente} fecha = {fechaExamen}/>)
-
-  }
+  const [exams, setExams] = useState(null);
+  useEffect(() =>
+  {
+    fetch("/api/exam")
+      .then(res => res.json())
+      .then(data =>
+        {
+          setExams(data.map(x => <Elemento
+            key={x.id_examen}
+            nombre={x.nombre_paciente}
+            fecha={x.fecha.slice(0, 10)}
+            idExam = {x.id_examen}/>
+          ));
+        });
+        console.log(exams);
+    }, []);
 
   return (
     
@@ -53,9 +57,7 @@ function MainScreenAdmin() {
 
           </div>
 
-          {items}
-          {/* <Elemento nombre={"Maria Eugenia Durán Cañedo"} fecha={"02-05-2022"} hora = {"16:21"}/> */}
-
+          {exams}
           
         </div>
 

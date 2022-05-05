@@ -25,27 +25,19 @@ const app = express()
 // localhost:3001/api/exam?id=1&personal=aaa&paciente=bbb&medico=ccc
 app.get("/api/exam", (req, res) =>
 {
-    let query = "SELECT * FROM examen";
-    if (req.query.id || req.query.personal ||
-        req.query.paciente || req.query.medico)
-        query += " WHERE 1";
-    if (req.query.id)
-    {
-        query += ` AND id_examen=${req.query.id}`;
-    }
-    if (req.query.personal)
-    {
-        query += ` AND usuario_personal='${req.query.personal}'`;
-    }
-    if (req.query.paciente)
-    {
-        query += ` AND usuario_paciente='${req.query.paciente}'`;
-    }
-    if (req.query.medico)
-    {
-        query += ` AND usuario_medico='${req.query.medico}'`;
-    }
-    query += ";";
+    let query = "SELECT * FROM examen"
+        + (req.query.id || req.query.personal ||
+        req.query.paciente || req.query.medico ?
+            " WHERE 1" : "")
+        + (req.query.id ?
+            ` AND id_examen=${req.query.id}` : "")
+        + (req.query.personal ?
+            ` AND usuario_personal='${req.query.personal}'` : "")
+        + (req.query.paciente ?
+            ` AND usuario_paciente='${req.query.paciente}'` : "")
+        + (req.query.medico ?
+            ` AND usuario_medico='${req.query.medico}'` : "")
+        + ";";
     console.log(query);
     con.query(
         query,

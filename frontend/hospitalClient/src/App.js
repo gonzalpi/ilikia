@@ -5,6 +5,7 @@ import {ErrorPage} from './ErrorPage'
 import AppLayout from './layout/AppLayout'
 import { Settings } from './settings';
 import { ExamenResultados } from './mainScreen/examenResultados';
+import { Pencil } from './unity/pencil'
 
 import {Evaluation} from './evaluation/Minimental.js';
 import {
@@ -31,8 +32,9 @@ function App() {
   
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
-            <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} />
-            <Route path='menu/examenesPacientes/:id/examenResultados/:id' element = {<ExamenResultados/>} />
+            {/* <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} /> */}
+            <Route path='menu/examenResultados/:id' element = {<ExamenResultados/>} />
+            <Route path='/unity' element = {<Pencil/>}/>
 
 
           </Route>

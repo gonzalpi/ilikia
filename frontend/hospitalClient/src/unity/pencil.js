@@ -9,7 +9,20 @@ export default function Pencil(){
         frameworkUrl: "webGL/pencil/WebBuild.framework.js",
         codeUrl: "webGL/pencil/WebBuild.wasm",
     });
-    return <Unity unityContext={unityContext} />;
+    return (
+
+    <div style={{
+
+        width: "100%",
+        display: "grid",
+        gridTemplateColumns: "auto auto"
+
+    }}>
+
+        <Unity width="100%" height="100%" unityContext={unityContext} />
+
+    </div>
+    );
 };
 
 export {Pencil}

@@ -26,7 +26,7 @@ function MainScreenAdmin() {
           ));
         });
         console.log(exams);
-  }, []);
+    }, []);
 
   return (
     

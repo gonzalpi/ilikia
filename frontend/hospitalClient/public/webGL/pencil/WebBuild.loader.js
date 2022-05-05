@@ -123,8 +123,8 @@ function createUnityInstance(canvas, config, onProgress) {
       if (canvas.style.width) {
         _savedElementWidth = canvas.style.width;
         _savedElementHeight = canvas.style.height;
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
+        canvas.style.width = "500%";
+        canvas.style.height = "500%";
       }
     } else {
       if (_savedElementWidth) {

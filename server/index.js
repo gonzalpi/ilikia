@@ -22,7 +22,14 @@ con.connect(function(err) {
 const app = express()
 // app.use(express.static(path.resolve(__dirname, '../frontend/hospitalClient/build')));
 
-// localhost:3001/api/exam?id=1&personal=aaa&paciente=bbb&medico=ccc
+/*
+localhost:3001/api/exam
+// PARÁMETROS OPCIONALES
+    id=1
+    personal=aaa
+    paciente=bbb
+    medico=ccc
+*/
 app.get("/api/exam", (req, res) =>
 {
     let query = "SELECT * FROM examen"
@@ -39,15 +46,69 @@ app.get("/api/exam", (req, res) =>
             ` AND usuario_medico='${req.query.medico}'` : "")
         + ";";
     console.log(query);
-    con.query(
-        query,
-        (err, results, fields) =>
+    con.query(query, (err, results, fields) =>
+    {
+        err ?
+        res.send(err) :
+        res.send(results);
+    });
+});
+
+/*
+localhost:3001/api/exam
+// PARÁMETROS COMPULSORIOS
+    personal=aaa
+    paciente=bbb
+    medico=ccc
+    tipo=1
+    fecha=YYYY-MM-DD
+    total=10
+// PARÁMETROS OPCIONALES
+    c1=2
+    c2=0
+    ...
+    c10=1
+*/
+app.post("/api/exam", (req, res) =>
+{
+    if (req.query.personal && req.query.paciente &&
+        req.query.medico && req.query.tipo &&
+        req.query.fecha && req.query.total)
+    {
+        let query = "INSERT INTO examen ("
+            + "usuario_personal, usuario_paciente,"
+            + " usuario_medico, tipo, fecha, total";
+        for (let i = 0; i < 10; i++)
+        {
+            query += req.query[`c${i + 1}`] ? `, cat_${i + 1}` : "";
+        }
+        query += `) VALUES ('${req.query.personal}', '${req.query.paciente}',`
+            + ` '${req.query.medico}', '${req.query.tipo}',`
+            + ` '${req.query.fecha}', ${req.query.total}`
+        for (let i = 0; i < 10; i++)
+        {
+            query += req.query[`c${i + 1}`] ? `, ${req.query[`c${i + 1}`]}` : "";
+        }
+        query += ");"
+        console.log(query);
+        con.query(query, (err, results, fields) =>
         {
             err ?
             res.send(err) :
+            {};
+        });
+        con.query("SELECT LAST_INSERT_ID();", (err, results, fields) =>
+        {
+            err ? 
+            res.send(err) :
             res.send(results);
-        }
-    );
+        });
+    }
+    else
+    {
+        res.status(400);
+        res.send("Error: Los datos están incompletos.")
+    }
 });
 
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

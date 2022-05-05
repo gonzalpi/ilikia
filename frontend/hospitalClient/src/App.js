@@ -15,6 +15,7 @@ import {
   Link
 
 } from "react-router-dom";
+import { ExamenesPacientes } from './mainScreen/examenesPacientes';
 
 function App() {
   return (
@@ -27,10 +28,12 @@ function App() {
 
           <Route path="/" element = {<AppLayout/>}>
 
-
+  
+            {/* <Route path="/menu" element = {<ExamenesPacientes/>} />  */}
             <Route path="/menu" element = {<MainScreenAdmin/>} />
             <Route path="/config" element = {<Settings/>} />
-            <Route path='menu/examenRes/:id' element = {<ExamenResultados/>} />
+            <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} />
+            <Route path='examenesPacientes/examenResultados/:id' element = {<ExamenResultados/>} />
 
 
           </Route>

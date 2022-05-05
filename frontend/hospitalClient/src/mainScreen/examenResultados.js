@@ -13,8 +13,8 @@ function Score(props) {
 }
 
 function ExamenResultados() {
-
-    let {id} = useParams();
+    
+    let {id} = useParams()
 
   return (
 

@@ -83,7 +83,6 @@ localhost:3001/api/exam
     paciente=bbb
     medico=ccc
     tipo=1
-    fecha=YYYY-MM-DD
     total=10
 // PARÁMETROS OPCIONALES
     c1=2
@@ -95,7 +94,7 @@ app.post("/api/exam", (req, res) =>
 {
     if (req.query.personal && req.query.paciente &&
         req.query.medico && req.query.tipo &&
-        req.query.fecha && req.query.total)
+        req.query.total)
     {
         let query = "INSERT INTO examen ("
             + "usuario_personal, usuario_paciente,"
@@ -106,7 +105,7 @@ app.post("/api/exam", (req, res) =>
         }
         query += `) VALUES ('${req.query.personal}', '${req.query.paciente}',`
             + ` '${req.query.medico}', '${req.query.tipo}',`
-            + ` '${req.query.fecha}', ${req.query.total}`
+            + ` CURDATE(), ${req.query.total}`
         for (let i = 0; i < 10; i++)
         {
             query += req.query[`c${i + 1}`] ? `, ${req.query[`c${i + 1}`]}` : "";

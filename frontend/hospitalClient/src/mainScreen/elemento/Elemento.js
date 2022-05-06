@@ -30,7 +30,7 @@ function ElementoEX(props) {
 function Elemento(props) {
 
   let navigate = useNavigate()
-  let link = "examenesPacientes/" + props.nombre
+  let link = "examenResultados/" + props.idExam
   // console.log(props.nombre)
   // console.log(props.id)
   

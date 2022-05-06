@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, Fragment} from "react";
+import Unity, { UnityContext } from "react-unity-webgl";
 import ReactDOM from "react-dom"
 import DefaultQuestion from "./DefaultQuestion";
 import "./Minimental.css"
-import { Pentagons } from './unity/pentagons'
+// const imagen = require('./Reloj-de-pulsera-Amazon.jpg')
+// import imagen from './relojito.jpg';
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
@@ -17,6 +19,12 @@ export default function Minimental({personal, paciente, medico, tipo})
         codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
     });
     
+    const unityContext2 = new UnityContext({
+        loaderUrl: "webGL/pentagons/WebBuildPentagon.loader.js",
+        dataUrl: "webGL/pentagons/WebBuildPentagon.data",
+        frameworkUrl: "webGL/pentagons/WebBuildPentagon.framework.js",
+        codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
+    });
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)
 
@@ -137,17 +145,29 @@ export default function Minimental({personal, paciente, medico, tipo})
             // ¿Desplegar cont. adicional?: VERDADERO
             // ¿Pregunta tiene cont. adicional?: VERDADERO
             <>
-                minimental.questions[qNum].additional === 1 ?(
-                    <h4>CIERRE LOS OJOS </h4>
-                ) :
-                minimental.questions[qNum].additional === 2 ?(
+                {minimental.questions[qNum].additional === 1 ?
+                    <h1 style={{fontSize: "10em", textAlign: "center"}}>CIERRE LOS OJOS </h1>
+                : minimental.questions[qNum].additional === 2 ?
                     <Fragment>
                         <div className="unity-container">
                             <Unity unityContext={unityContext} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
                             {/* The Unity app will be rendered here. */}
                         </div>
                     </Fragment>
-                )
+                    // /frontend\hospitalClient\public\Reloj-de-pulsera-Amazon.jpg'
+                : minimental.questions[qNum].additional === 3 ?
+                    // <image src={require("https://www.consumoteca.com/wp-content/uploads/Reloj-de-pulsera-Amazon.jpg")} width="500" height="600"></image>
+                    <iframe src="https://www.consumoteca.com/wp-content/uploads/Reloj-de-pulsera-Amazon.jpg" width={500} height={600}></iframe>
+                    // <a href="https://www.consumoteca.com/wp-content/uploads/Reloj-de-pulsera-Amazon.jpg">IMAGEN</a>
+                : minimental.questions[qNum].additional === 4 ?
+                    <Fragment>
+                    <div className="unity-container">
+                        <Unity unityContext={unityContext2} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
+                        {/* The Unity app will be rendered here. */}
+                    </div>
+                </Fragment>
+                : <></>
+                }
 
                 <button onClick={() => setShowAdditional(!showAdditional)}>
                     Ocultar

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './GridLogin.css';
 import {GridInputBox} from './GridInputBox';
 import {WelcomeText} from './WelcomeText';
@@ -9,21 +9,26 @@ function GridLogin() {
 
     let navigate = useNavigate();
 
+    const [input, setInput] = useState('');
+
+    const [exams, setExams] = useState(null);
+    console.log(input)
+
+
     return (
 
         <div className='GridLogin'>
             
-            {/* <img src={logo} width={"82"} height={"82"}/> */}
 
             <h1 style={{
 
                 fontSize: "4em",
                 fontFamily: "Montserrat",
-                color: "#556500"
+                color: "#556500",
+                margin: "0"
 
 
             }}>Ilikia</h1>
-            {/* <WelcomeText/> */}
             
             <p style={{
 
@@ -31,33 +36,47 @@ function GridLogin() {
                 fontWeight: "700",
                 fontSize: "2em",
 
-            }}>Usuario / Cédula</p>
+            }}>Usuario</p>
             
-            <GridInputBox/>
+            <input style={{
 
-            {/* <p style={{
+                textAlign: "left",
+                position: "sticky",
+                color: "rgb(25, 29, 8, 0.8)",
+                fontFamily: "Montserrat",
+                fontWeight: "700",
+                fontSize: "2em",
+                borderRadius: "40px",
+                padding: "4%",
+                backgroundColor: "#E1E5C3",
+                border: 'none'
 
-                marginTop: "5%",
+            }} value={input} onInput= {e => setInput(e.target.value)}/>
+
+            <p style={{
+
                 fontFamily: 'Montserrat',
                 fontWeight: "700",
                 fontSize: "2em",
 
             }}>Contraseña</p>
 
-            <input type={"password"} style={{
+            <input style={{
 
                 textAlign: "left",
-                fontFamily: 'Montserrat',
+                position: "sticky",
+                color: "rgb(25, 29, 8, 0.8)",
+                fontFamily: "Montserrat",
                 fontWeight: "700",
                 fontSize: "2em",
-                color: "rgba(25, 29, 8, 0.8)",
                 borderRadius: "40px",
-                padding: "5%",
-                marginTop: "3%",
+                padding: "4%",
                 backgroundColor: "#E1E5C3",
-                border: "none"
+                border: 'none',
+                marginBottom: "3%"
 
-            }}/> */}
+            }} type="password"/>
+
 
             <button style={{
 
@@ -65,7 +84,7 @@ function GridLogin() {
                 width: "50%",
                 height: "4.5em", 
                 margin: "auto",
-                marginTop: "8%",
+                // marginTop: "8%",
                 borderRadius: "40px",
                 fontFamily: 'Montserrat',
                 fontWeight: '700',

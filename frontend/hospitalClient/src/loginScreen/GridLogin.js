@@ -9,10 +9,14 @@ function GridLogin() {
 
     let navigate = useNavigate();
 
+    var user = 0;
+
     const [input, setInput] = useState('');
 
     const [exams, setExams] = useState(null);
     console.log(input)
+
+    var ruta = "";
 
 
     return (
@@ -96,7 +100,23 @@ function GridLogin() {
 
             }} onClick= { () => {
                 
-                navigate("/menu")
+
+                if (user == 0) {
+
+                    navigate("/minimental/" + "agh" + "/" + input + "/pog/1")
+
+                } else if (user == 1) {
+
+                    navigate("/menu")
+
+                } else {
+
+                    alert("Usuario no existente, verifique sus datos")
+
+                }
+
+                // paciente 0 | doctor 1 | nein -1
+
 
             }}> Continuar </button>
 

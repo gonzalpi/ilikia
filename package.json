@@ -21,7 +21,8 @@
   "dependencies": {
     "e": "^0.2.1",
     "express": "^4.18.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "react-unity-webgl": "^8.8.0"
   },
   "devDependencies": {
     "file-loader": "^6.2.0",

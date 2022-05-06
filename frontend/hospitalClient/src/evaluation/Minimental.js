@@ -25,17 +25,17 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
     var { personal, paciente, medico, tipo } = useParams();
     // console.log(tipo)
     const unityContext = new UnityContext({
-        loaderUrl: "webGL/pentagons/WebBuildPentagon.loader.js",
-        dataUrl: "webGL/pentagons/WebBuildPentagon.data",
-        frameworkUrl: "webGL/pentagons/WebBuildPentagon.framework.js",
-        codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
+        loaderUrl: "/../../../../webGL/pentagons/WebBuildPentagon.loader.js",
+        dataUrl: "/../../../../webGL/pentagons/WebBuildPentagon.data",
+        frameworkUrl: "/../../../../webGL/pentagons/WebBuildPentagon.framework.js",
+        codeUrl: "/../../../../webGL/pentagons/WebBuildPentagon.wasm",
     });
     
     const unityContext2 = new UnityContext({
-        loaderUrl: "webGL/pencil/WebBuild.loader.js",
-        dataUrl: "webGL/pencil/WebBuild.data",
-        frameworkUrl: "webGL/pencil/WebBuild.framework.js",
-        codeUrl: "webGL/pencil/WebBuild.wasm",
+        loaderUrl: "/../../../../webGL/pencil/WebBuild.loader.js",
+        dataUrl: "/../../../../webGL/pencil/WebBuild.data",
+        frameworkUrl: "/../../../../webGL/pencil/WebBuild.framework.js",
+        codeUrl: "/../../../../webGL/pencil/WebBuild.wasm",
     });
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)

@@ -47,7 +47,7 @@ width: "75%"
 
 }}>
 
-<h1 className='h1'> {!exam ? "Cargando...":exam.nombre} </h1>
+<h1 className='h1'> {!exam ? "Cargando...":exam.nombre_paciente} </h1>
 
   <div className='containerExam'>
     

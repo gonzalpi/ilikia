@@ -9,14 +9,28 @@ function GridLogin() {
 
     let navigate = useNavigate();
 
-    var user = 0;
+    // var user = 0;
 
     const [input, setInput] = useState('');
 
     const [exams, setExams] = useState(null);
     console.log(input)
 
-    var ruta = "";
+    const [user, setUser] = useState(null);
+    const fetchUser = () => {
+
+      fetch("/api/usertype?usuario=" + input)
+        .then(res => res.json())
+        .then(data => {
+            
+          setUser(data.tipo)
+          console.log(data.tipo)
+          console.log(data)
+          console.log(input)
+        //   return data.tipo
+        })
+
+    };
 
 
     return (
@@ -100,7 +114,7 @@ function GridLogin() {
 
             }} onClick= { () => {
                 
-
+                fetchUser()
                 if (user == 0) {
 
                     navigate("/minimental/" + "agh" + "/" + input + "/pog/1")
@@ -108,12 +122,13 @@ function GridLogin() {
                 } else if (user == 1) {
 
                     navigate("/menu")
-
-                } else {
-
-                    alert("Usuario no existente, verifique sus datos")
-
+                
                 }
+                // } else {
+
+                //     alert("Usuario no existente, verifique sus datos")
+
+                // }
 
                 // paciente 0 | doctor 1 | nein -1
 

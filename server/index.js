@@ -11,7 +11,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "root",
     database: "ilikia",
-    socketPath: "/var/lib/mysql/mysql.sock"
+    // socketPath: "/var/lib/mysql/mysql.sock"
 });
 
 con.connect(function(err) {

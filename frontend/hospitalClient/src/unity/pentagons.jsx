@@ -13,12 +13,7 @@ function Pentagons(){
     return(
         <Fragment>
             <div>
-                <Fragment>
-                    <div className="unity-container">
-                        <Unity unityContext={unityContext} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
-                        {/* The Unity app will be rendered here. */}
-                    </div>
-                </Fragment>
+                <Unity unityContext={unityContext} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
             </div>
         </Fragment>
         );

@@ -2,12 +2,21 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom"
 import DefaultQuestion from "./DefaultQuestion";
 import "./Minimental.css"
+import { Pentagons } from './unity/pentagons'
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
 export default function Minimental({personal, paciente, medico, tipo})
 {
+
+    const unityContext = new UnityContext({
+        loaderUrl: "webGL/pentagons/WebBuildPentagon.loader.js",
+        dataUrl: "webGL/pentagons/WebBuildPentagon.data",
+        frameworkUrl: "webGL/pentagons/WebBuildPentagon.framework.js",
+        codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
+    });
+    
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)
 
@@ -125,11 +134,21 @@ export default function Minimental({personal, paciente, medico, tipo})
             // Condicionales para desplegar distintas pantallas de examen
             (showAdditional ?
             minimental.questions[qNum].additional ?
-
             // ¿Desplegar cont. adicional?: VERDADERO
             // ¿Pregunta tiene cont. adicional?: VERDADERO
             <>
-                <p>En construcción.<br/>Por hacer: tomar datos adicionales para desplegar texto, imagenes y Unity</p>
+                minimental.questions[qNum].additional === 1 ?(
+                    <h4>CIERRE LOS OJOS </h4>
+                ) :
+                minimental.questions[qNum].additional === 2 ?(
+                    <Fragment>
+                        <div className="unity-container">
+                            <Unity unityContext={unityContext} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
+                            {/* The Unity app will be rendered here. */}
+                        </div>
+                    </Fragment>
+                )
+
                 <button onClick={() => setShowAdditional(!showAdditional)}>
                     Ocultar
                 </button>

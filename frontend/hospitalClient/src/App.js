@@ -6,9 +6,7 @@ import AppLayout from './layout/AppLayout'
 import { Settings } from './settings';
 import { ExamenResultados } from './mainScreen/examenResultados';
 import { Pencil } from './unity/pencil'
-import { Pentagons } from './unity/pentagons'
 import {GridLogin} from './loginScreen/GridLogin'
-
 import {Evaluation} from './evaluation/Minimental.js';
 import {
 

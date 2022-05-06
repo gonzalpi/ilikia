@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, Fragment} from "react";
 import DefaultQuestion from "./DefaultQuestion";
+import Unity, {UnityContext} from "react-unity-webgl";
 import "./Minimental.css"
-import { Pentagons } from './unity/pentagons'
+import Pentagons from '../unity/pentagons'
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1

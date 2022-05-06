@@ -18,4 +18,4 @@ function Pentagons(){
         </Fragment>
         );
     }
-export {Pentagons};
+export default Pentagons;

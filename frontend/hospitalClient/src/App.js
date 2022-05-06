@@ -7,7 +7,8 @@ import { Settings } from './settings';
 import { ExamenResultados } from './mainScreen/examenResultados';
 import { Pencil } from './unity/pencil'
 import {GridLogin} from './loginScreen/GridLogin'
-import {Evaluation} from './evaluation/Minimental.js';
+import Evaluation from './evaluation/Minimental.js';
+import Pentagons from './unity/pentagons';
 import {
 
   BrowserRouter as Router,

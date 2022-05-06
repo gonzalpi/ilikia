@@ -103,7 +103,7 @@ function GridLogin() {
 
                 if (user == 0) {
 
-                    navigate("/minimental/" + "agh" + "/" + input + "/pog/1")
+                    navigate("/minimental/" + "ajh" + "/" + input + "/pog/1")
 
                 } else if (user == 1) {
 

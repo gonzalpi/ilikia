@@ -29,8 +29,20 @@
     bottom: 0;
 }
 
-.nav-buttons > * {
+.eval-nav-button {
+    background-color: #D7EC7C;
+    width: 7em;
+    height: 2em;
+    border-radius: 40px;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 1.5em;
+    border: none;
     margin: 10px;
+}
+
+.eval-nav-button:active {
+    background-color: #C7DC6C;
 }
 
 .buttonM {

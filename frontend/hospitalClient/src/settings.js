@@ -1,7 +1,11 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom";
 import './settings.css'
 
 function Settings() {
+
+  let navigate = useNavigate();
+
   return (
     <div style={{
 
@@ -22,6 +26,10 @@ function Settings() {
             <button className='coolButton' style={{
 
                 backgroundColor: "#FFDAD4"
+
+            }} onClick = {() => {
+
+              navigate("/")
 
             }}>Cerrar sesión</button>
   

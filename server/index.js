@@ -119,12 +119,12 @@ app.post("/api/exam", (req, res) =>
             query += req.query[`c${i + 1}`] ? `, ${req.query[`c${i + 1}`]}` : "";
         }
         query += ");"
-        console.log(query);
+        // console.log(query);
         con.query(query, (err, results, fields) =>
         {
-            err ?
-            res.send(err) :
-            {};
+            // err ?
+            // res.send(err) :
+            // {};
         });
         con.query("SELECT LAST_INSERT_ID();", (err, results, fields) =>
         {

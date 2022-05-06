@@ -1,5 +1,6 @@
 import React, {useState, Fragment} from "react";
 import Unity, { UnityContext } from "react-unity-webgl";
+import { useNavigate, useParams } from 'react-router-dom'
 import ReactDOM from "react-dom"
 import DefaultQuestion from "./DefaultQuestion";
 import "./Minimental.css"
@@ -9,9 +10,12 @@ const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
+
 export default function Minimental({personal, paciente, medico, tipo}) // tipo = 1 para minimental
 {
-
+    
+    var { personal, paciente, medico, tipo } = useParams();
+    // console.log(tipo)
     const unityContext = new UnityContext({
         loaderUrl: "webGL/pentagons/WebBuildPentagon.loader.js",
         dataUrl: "webGL/pentagons/WebBuildPentagon.data",
@@ -20,10 +24,10 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
     });
     
     const unityContext2 = new UnityContext({
-        loaderUrl: "webGL/pentagons/WebBuildPentagon.loader.js",
-        dataUrl: "webGL/pentagons/WebBuildPentagon.data",
-        frameworkUrl: "webGL/pentagons/WebBuildPentagon.framework.js",
-        codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
+        loaderUrl: "webGL/pencil/WebBuild.loader.js",
+        dataUrl: "webGL/pencil/WebBuild.data",
+        frameworkUrl: "webGL/pencil/WebBuild.framework.js",
+        codeUrl: "webGL/pencil/WebBuild.wasm",
     });
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)

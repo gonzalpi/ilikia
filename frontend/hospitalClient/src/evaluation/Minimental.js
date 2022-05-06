@@ -9,7 +9,7 @@ const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
-export default function Minimental({personal, paciente, medico, tipo})
+export default function Minimental({personal, paciente, medico, tipo}) // tipo = 1 para minimental
 {
 
     const unityContext = new UnityContext({
@@ -37,6 +37,9 @@ export default function Minimental({personal, paciente, medico, tipo})
     // - puntaje de pregunta actual == pregunta anterior al presionar Atrás
     // - puntaje de pregunta actual == pregunta siguiente al presionar Continuar
     const [update, setUpdate] = useState(false)
+
+    // Estado y hook de envío de datos
+    const [sent, setSent] = useState(false);
     
     // Funciones de navegación
     // - Actualizan índice de pregunta
@@ -61,13 +64,19 @@ export default function Minimental({personal, paciente, medico, tipo})
     // Se pasa a componente DefaultQuestion
     const updateCallback = () => setShowNext(true)
 
-    // Función que retorna la suma de puntajes por categoría
+    // Función que retorna puntaje total y por categoría
     const sumScores = () => {
         let perCategory = Array(minimental.categories.length).fill(0)
-        for (let i = 0; i < minimental.questions.length; i++) {
-            perCategory[minimental.questions[i].category] += scores[i]
+        let scoreSum = 0
+        for (let i = 0; i < minimental.questions.length; i++)
+        {
+            perCategory[minimental.questions[i].category] += scores[i];
         }
-        return perCategory
+        for (let i = 0; i < perCategory.length; i++)
+        {
+            scoreSum += perCategory[i];
+        }
+        return {"total": scoreSum, "categories": perCategory}
     }
 
     // DEV
@@ -76,7 +85,30 @@ export default function Minimental({personal, paciente, medico, tipo})
     // DEV
     // - Despliega puntajes que se deben mandar al backend al presionar Enviar
     const sendData = () => {
-        alert("Puntajes enviados: " + sumScores() + "\nPor hacer: conectar a back-end")
+        setSent(true);
+        let results = sumScores();
+        let post = `/api/exam?personal=${personal}&paciente=${paciente}&medico=${medico}&tipo=${tipo}`
+            + `&total=${results.total}`
+            + `&c1=${results.categories[0]}`
+            + `&c2=${results.categories[1]}`
+            + `&c3=${results.categories[2]}`
+            + `&c4=${results.categories[3]}`
+            + `&c5=${results.categories[4]}`
+            + `&c6=${results.categories[5]}`
+            + `&c7=${results.categories[6]}`
+            + `&c8=${results.categories[7]}`;
+        fetch(post, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(data =>
+                {
+                    console.log(data);
+                });
     }
 
     // Botones de navegación
@@ -87,7 +119,7 @@ export default function Minimental({personal, paciente, medico, tipo})
                     - Disponible en todas las pantallas excepto la primera */}
                 <div>
                     {qNum >= 0 &&
-                    <button className="nav-button" onClick={prevQ}>
+                    <button className="eval-nav-button" onClick={prevQ}>
                         Atrás
                     </button>}
                 </div>
@@ -104,16 +136,17 @@ export default function Minimental({personal, paciente, medico, tipo})
                 <div>
                     {qNum < minimental.questions.length &&
                     showNext &&
-                    <button className="nav-button" onClick={nextQ}>
+                    <button className="eval-nav-button" onClick={nextQ}>
                         Continuar
                     </button>}
                 </div>
                 
                 {/* Botón de envío de datos
-                    - Disponible en la última pantalla */}
+                    - Disponible en la última pantalla
+                    - Envía datos una vez */}
                 <div>
                     {qNum === minimental.questions.length &&
-                    <button className="nav-button" onClick={sendData}>
+                    <button className="eval-nav-button" onClick={() => {if (!sent) sendData();}}>
                         Enviar
                     </button>}
                 </div>

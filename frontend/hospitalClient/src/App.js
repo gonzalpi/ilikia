@@ -6,9 +6,14 @@ import AppLayout from './layout/AppLayout'
 import { Settings } from './settings';
 import { ExamenResultados } from './mainScreen/examenResultados';
 import { Pencil } from './unity/pencil'
+import { Pentagons } from './unity/pentagons'
 import {GridLogin} from './loginScreen/GridLogin'
+<<<<<<< HEAD
 import Evaluation from './evaluation/Minimental.js';
 import Pentagons from './unity/pentagons';
+=======
+import Minimental from './evaluation/Minimental.js';
+>>>>>>> main
 import {
 
   BrowserRouter as Router,
@@ -21,7 +26,7 @@ import { ExamenesPacientes } from './mainScreen/examenesPacientes';
 
 function App() {
   return (
-
+    // <Evaluation/>
     <Router>
         <Routes>
 
@@ -35,11 +40,12 @@ function App() {
             <Route path="/config" element = {<Settings/>} />
             
             <Route path='menu/examenResultados/:id' element = {<ExamenResultados/>} />
-            <Route path='/unity' element = {<Pencil/>}/>
-            <Route path='/unity2' element = {<Pentagons/>}/>
 
 
           </Route>
+
+          <Route path='/minimental/:personal/:paciente/:medico/:tipo' element = {<Minimental/>}/>
+          {/* <Route path='/minimental/agh/:paciente/pog/1' element = {<Minimental/>}/> */}
 
           {/* <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} /> */}
 

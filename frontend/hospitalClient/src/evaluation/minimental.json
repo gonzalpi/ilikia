@@ -84,7 +84,7 @@
             "category": 3,
             "note": "Si el paciente tiene menos de 3 años de escolaridad, asignar 1 punto y continuar a la siguiente pregunta.",
             "instructions" : "Colóquese la pantalla a una distancia no mayor de 30 centímetros y con auxiliar visual (si lo requiere). Presione el botón mostrar para desplegar instrucción.",
-            "text": "Por favor haga lo que dice aquí. 'CIERRE LOS OJOS'",
+            "text": "Por favor haga lo que dice aquí.",
             "additional": 1,
             "scores": [0, 1]
         },
@@ -112,14 +112,14 @@
         {
             "category": 6,
             "instructions" : "Colóquese la pantalla a una distancia de, al menos, 30 centímetros. Asigne 1 punto si la respuesta es 'reloj'. Presione el botón mostrar para desplegar la imagen.",
-            "text": "¿Qué es esto? (RELOJ) ¿Para qué es?",
+            "text": "¿Qué es esto ¿Para qué es?",
             "additional": 3,
             "scores": [0, 1]
         },
         {
             "category": 6,
             "instructions" : "Colóquese la pantalla a una distancia de, al menos, 30 centímetros. Asigne 1 punto si la respuesta es 'lápiz'. La respuesta se considera incorrecta si es 'lapicero', 'lapicera', 'pluma', 'bolígrafo', etc. Presione el botón mostrar para desplegar la imagen.",
-            "text": "¿Qué es esto? (LÁPIZ) ¿Para qué es?",
+            "text": "¿Qué es esto ¿Para qué es?",
             "additional": 4,
             "scores": [0, 1]
         },

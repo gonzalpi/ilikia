@@ -214,7 +214,7 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 : <></>
                 }
 
-                <button onClick={() => setShowAdditional(!showAdditional)}>
+                <button className="eval-nav-button" onClick={() => setShowAdditional(!showAdditional)}>
                     Ocultar
                 </button>
             </> :
@@ -238,7 +238,7 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                     - Disponible en preguntas con contenido adicional */}
                 <div>
                     {minimental.questions[qNum].additional &&
-                    <button onClick={() => setShowAdditional(!showAdditional)}>
+                    <button className="eval-nav-button" onClick={() => setShowAdditional(!showAdditional)}>
                         Mostrar
                     </button>}
                 </div>

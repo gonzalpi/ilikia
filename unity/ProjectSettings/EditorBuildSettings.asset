@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/mainScreen.unity
     guid: 326727eb4d88c8b469681666b6958524
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PentagonDrawingScene.unity
     guid: 4ce4d4d4aeef2e54e97bb40827915db8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PencilTest.unity
     guid: fbc2945fe164f3e478d210f403ccd49c
   m_configObjects: {}

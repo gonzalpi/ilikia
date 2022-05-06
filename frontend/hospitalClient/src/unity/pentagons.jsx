@@ -10,7 +10,17 @@ export default function Pentagons(){
         frameworkUrl: "webGL/pentagons/WebBuildPentagon.framework.js",
         codeUrl: "webGL/pentagons/WebBuildPentagon.wasm",
     });
-    return <Unity unityContext={unityContext} />;
-};
-
+    return(
+        <Fragment>
+            <div>
+                <Fragment>
+                    <div className="unity-container">
+                        <Unity unityContext={unityContext} style={{height: "80vh", width: "150vh", border: "0px solid black"}}/>
+                        {/* The Unity app will be rendered here. */}
+                    </div>
+                </Fragment>
+            </div>
+        </Fragment>
+        );
+    }
 export {Pentagons}

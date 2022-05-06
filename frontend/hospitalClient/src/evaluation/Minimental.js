@@ -1,11 +1,19 @@
 import React, {useState, Fragment} from "react";
+<<<<<<< HEAD
+=======
 import Unity, { UnityContext } from "react-unity-webgl";
 import { useNavigate, useParams } from 'react-router-dom'
 import ReactDOM from "react-dom"
+>>>>>>> main
 import DefaultQuestion from "./DefaultQuestion";
+import Unity, {UnityContext} from "react-unity-webgl";
 import "./Minimental.css"
+<<<<<<< HEAD
+import Pentagons from '../unity/pentagons'
+=======
 // const imagen = require('./Reloj-de-pulsera-Amazon.jpg')
 // import imagen from './relojito.jpg';
+>>>>>>> main
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1

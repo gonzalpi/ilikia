@@ -8,7 +8,12 @@ import { ExamenResultados } from './mainScreen/examenResultados';
 import { Pencil } from './unity/pencil'
 import { Pentagons } from './unity/pentagons'
 import {GridLogin} from './loginScreen/GridLogin'
+<<<<<<< HEAD
+import Evaluation from './evaluation/Minimental.js';
+import Pentagons from './unity/pentagons';
+=======
 import Minimental from './evaluation/Minimental.js';
+>>>>>>> main
 import {
 
   BrowserRouter as Router,

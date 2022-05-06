@@ -11,7 +11,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "root",
     database: "ilikia",
-    // socketPath: "/var/lib/mysql/mysql.sock"
+    socketPath: "/var/lib/mysql/mysql.sock"
 });
 
 con.connect(function(err) {
@@ -137,6 +137,41 @@ app.post("/api/exam", (req, res) =>
     {
         res.status(400);
         res.send("Error: Solicitud incompleta")
+    }
+});
+
+/*
+localhost:3001/api/exam
+// PARÁMETROS COMPULSORIOS
+    usuario=aaa
+// NOTA: usuario debe existir, si no, no retorna nada aún
+*/
+app.get("/api/usertype", (req, res) =>
+{
+    if (req.query.usuario)
+    {
+        // setTimeout(() => {return res.send({"tipo": -1});}, 2000)
+        con.query(
+            `SELECT usuario FROM paciente WHERE paciente.usuario='${req.query.usuario}';`,
+            (err, results, fields) =>
+            {
+                if (err) {res.send(err);}
+                else if (results.length > 0) {res.send({"tipo": 0});}
+            }
+        );
+        con.query(
+            `SELECT rol FROM personal_salud WHERE personal_salud.usuario='${req.query.usuario}';`,
+            (err, results, fields) =>
+            {
+                if (err) {res.send(err);}
+                else if (results.length > 0) {console.log(res); res.send({"tipo": results[0].rol});}
+            }
+        );
+    }
+    else
+    {
+        res.status(400);
+        res.send("Error: Solicitud incompleta");
     }
 });
 

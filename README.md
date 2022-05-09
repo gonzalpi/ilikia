@@ -1,4 +1,4 @@
-# ILIKIA
+# Ilikia
 
 *Ilikia* is an exam application tool for elderly care. It was developed as a prototype proposal for the Club del Abuelo elderly care home in Zapopan, México.
 
@@ -16,19 +16,14 @@ Users can apply Mini-Mental State Examinations to assess a patient's mental cond
 
     - Optional: Add the data contained in `server/test_data.sql` to experiment
 
-2. Open a command line window at the root of the project
-
-3. Install *server* dependencies
+2. Run the following in a command line at the root of the project
 
         npm install
-
-4. Build client
-
         npm run build
-
-5. Start web app on `localhost:3001`
-
         npm start
+
+3. Open web app on `localhost:3001`
+
 
 ## Tech stack
 

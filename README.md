@@ -18,18 +18,16 @@ Users can apply Mini-Mental State Examinations to assess a patient's mental cond
 
 2. Open a command line window at the root of the project
 
-3. Install all *server* dependencies and run
+3. Install *server* dependencies
 
         npm install
-        npm start
 
-4. Open another command line window and navigate to the client folder
+4. Build client
 
-        cd client/
+        npm run build
 
-5. Install all *client* dependencies and run
+5. Start web app on `localhost:3001`
 
-        npm install
         npm start
 
 ## Tech stack

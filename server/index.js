@@ -2,7 +2,7 @@
 
 const express = require("express");
 const mysql = require("mysql2");
-// const path = require("path");
+const path = require("path");
 
 const PORT = process.env.PORT || 3001;
 
@@ -20,7 +20,7 @@ con.connect(function(err) {
 });
 
 const app = express()
-// app.use(express.static(path.resolve(__dirname, '../frontend/hospitalClient/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 /*
 localhost:3001/api/exam

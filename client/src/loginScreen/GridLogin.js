@@ -9,28 +9,47 @@ function GridLogin() {
 
     let navigate = useNavigate();
 
-    // var user = 0;
-
     const [input, setInput] = useState('');
-
-    const [exams, setExams] = useState(null);
     console.log(input)
 
     const [user, setUser] = useState(null);
+    const [medico, setMedico] = useState(null);
+    {
+        
+    }
+    const [personal, setPersonal] = useState(null);
+
+    useEffect(() => {if (input.length > 0) fetchUser()}, [input]);
+
+    async function fetchUserType(usuario)
+    {
+        const res = await fetch("/api/usertype?usuario=" + usuario);
+        const usertype_json = await res.json();
+        return usertype_json.tipo;
+    }
+    async function fetchStaff(usuario)
+    {
+        const res = await fetch("api/staff?usuario=" + usuario);
+        const staff = await res.json();
+        return staff;
+    }
     const fetchUser = () => {
-
-      fetch("/api/usertype?usuario=" + input)
-        .then(res => res.json())
+        fetchUserType(input)
+        .then(data => setUser(data));
+        fetchStaff(input)
         .then(data => {
-            
-          setUser(data.tipo)
-          console.log(data.tipo)
-          console.log(data)
-          console.log(input)
-        //   return data.tipo
-        })
-
-    };
+            for (let i = 0; i < data.length; i++)
+            {
+                fetchUserType(data[i].usuario_personal)
+                .then(usertype => {
+                    if (usertype == 1)
+                        setMedico(data[i].usuario_personal);
+                    else
+                        setPersonal(data[i].usuario_personal);
+                });
+            }
+        });
+    }
 
 
     return (
@@ -114,23 +133,16 @@ function GridLogin() {
 
             }} onClick= { () => {
                 
-                fetchUser()
+                console.log(user, personal, input, medico)
                 if (user == 0) {
 
-                    navigate("/minimental/" + "ajh" + "/" + input + "/pog/1")
+                    navigate("/minimental/" + personal + "/" + input + "/" + medico + "/1")
 
                 } else if (user == 1) {
 
                     navigate("/menu")
                 
                 }
-                // } else {
-
-                //     alert("Usuario no existente, verifique sus datos")
-
-                // }
-
-                // paciente 0 | doctor 1 | nein -1
 
 
             }}> Continuar </button>

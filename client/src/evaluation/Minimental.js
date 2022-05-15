@@ -9,25 +9,28 @@ const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
-
-export default function Minimental({personal, paciente, medico, tipo}) // tipo = 1 para minimental
+export default function Minimental({personal, paciente, medico, tipo}) // tipo: 1 para minimental
 {
-    
+    // Usar parametros de URL
     var { personal, paciente, medico, tipo } = useParams();
-    // console.log(tipo)
+
+    // Navegador
+    let navigate = useNavigate();
+
+    // Contextos de Unity para renderizar en preguntas
     const unityContext = new UnityContext({
         loaderUrl: "/../../../../webGL/pentagons/WebBuildPentagon.loader.js",
         dataUrl: "/../../../../webGL/pentagons/WebBuildPentagon.data",
         frameworkUrl: "/../../../../webGL/pentagons/WebBuildPentagon.framework.js",
         codeUrl: "/../../../../webGL/pentagons/WebBuildPentagon.wasm",
     });
-    
     const unityContext2 = new UnityContext({
         loaderUrl: "/../../../../webGL/pencil/WebBuild.loader.js",
         dataUrl: "/../../../../webGL/pencil/WebBuild.data",
         frameworkUrl: "/../../../../webGL/pencil/WebBuild.framework.js",
         codeUrl: "/../../../../webGL/pencil/WebBuild.wasm",
     });
+
     // Estado y hook de visibilidad de botón Continuar
     const [showNext, setShowNext] = useState(true)
 
@@ -85,8 +88,8 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
     // DEV
     // - Imprime puntajes e índice de pregunta actual
     const printState = () => {console.log(scores); console.log("Question index: " + qNum);}
-    // DEV
-    // - Despliega puntajes que se deben mandar al backend al presionar Enviar
+
+    // Función que envía puntajes y retorna a la pantalla de inicio de sesión
     const sendData = () => {
         setSent(true);
         let results = sumScores();
@@ -112,6 +115,7 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 {
                     console.log(data);
                 });
+        navigate("/");
     }
 
     // Botones de navegación

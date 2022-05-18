@@ -2,13 +2,16 @@ import React, { useState } from "react"
 import "./DefaultQuestion.css"
 
 export default function DefaultQuestion({question, qNum, scores, updateCallback}) {
+    // Current question score state and hook
     const [score, setScore] = useState(scores[qNum])
+    // Update score and refresh parent component with callback function
     const updateScore = (x) => {
         setScore(x)
         scores[qNum] = x
         updateCallback()
     }
-    function ScoreButtons(x) {
+    // Score button
+    function ScoreButton(x) {
         return (
         <button
             className={x === scores[qNum] ? "score-button-selected" : "score-button"}
@@ -18,6 +21,7 @@ export default function DefaultQuestion({question, qNum, scores, updateCallback}
         </button>
         )
     }
+    
     return (
         <>
             <div className="question">
@@ -35,7 +39,7 @@ export default function DefaultQuestion({question, qNum, scores, updateCallback}
             </div>
             <div id="score-buttons" className="score-buttons">
                 {
-                    question.scores.map(x => (<div>{ScoreButtons(x)}</div>))
+                    question.scores.map(x => (<div>{ScoreButton(x)}</div>))
                 }
             </div>
         </>

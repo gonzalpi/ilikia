@@ -5,45 +5,40 @@ import {ErrorPage} from './ErrorPage'
 import AppLayout from './layout/AppLayout'
 import { Settings } from './settings';
 import { ExamenResultados } from './mainScreen/examenResultados';
-import { Pencil } from './unity/pencil'
-import { Pentagons } from './unity/pentagons'
 import {GridLogin} from './loginScreen/GridLogin'
 import Minimental from './evaluation/Minimental.js';
 import {
-
   BrowserRouter as Router,
   Route,
-  Routes,
-  Link
-
+  Routes
 } from "react-router-dom";
-import { ExamenesPacientes } from './mainScreen/examenesPacientes';
 
 function App() {
   return (
-    // <Evaluation/>
     <Router>
         <Routes>
 
+          {/* Login screen */}
+          <Route exact path='/' element = {<GridLogin />}/>
 
-          <Route exact path='/' element = {<GridLogin />}/> // Raiz login screen
-
+          {/* Admin screen with sidebar layout */}
           <Route path="/" element = {<AppLayout/>}>
 
-  
+            {/* Menu with all exams available to doctor */}
             <Route path="/menu" element = {<MainScreenAdmin/>} />
-            <Route path="/config" element = {<Settings/>} />
-            
+
+            {/* Exam results */}
             <Route path='menu/examenResultados/:id' element = {<ExamenResultados/>} />
 
+            {/* Config screen: tutorials, log out */}
+            <Route path="/config" element = {<Settings/>} />
 
           </Route>
 
+          {/* Exam application */}
           <Route path='/minimental/:personal/:paciente/:medico/:tipo' element = {<Minimental/>}/>
-          {/* <Route path='/minimental/agh/:paciente/pog/1' element = {<Minimental/>}/> */}
 
-          {/* <Route path='menu/examenesPacientes/:id' element = {<ExamenesPacientes/>} /> */}
-
+          {/* Error page for all remaining routes */}
           <Route path='*' element={<ErrorPage/>} />
 
         </Routes>

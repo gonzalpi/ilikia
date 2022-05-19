@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MainScreenAdmin.css';
-import { Elemento, ElementoEX } from './elemento/Elemento';
-import Sidebar from '../sidebar/Sidebar';
-import {
-
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link
-
-} from "react-router-dom";
+import { Elemento } from './elemento/Elemento';
 
 function MainScreenAdmin() {
   const [exams, setExams] = useState(null);

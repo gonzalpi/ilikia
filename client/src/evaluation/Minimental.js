@@ -1,54 +1,54 @@
 import React, {useState, Fragment} from "react";
 import { useNavigate, useParams } from 'react-router-dom'
-import ReactDOM from "react-dom"
 import DefaultQuestion from "./DefaultQuestion";
 import Unity, {UnityContext} from "react-unity-webgl";
 import "./Minimental.css"
-import Pentagons from '../unity/pentagons'
 const minimental = require("./minimental.json")
 var scores = Array(minimental.questions.length).fill(-1)
 var qNum = -1
 
-
-export default function Minimental({personal, paciente, medico, tipo}) // tipo = 1 para minimental
+export default function Minimental({personal, paciente, medico, tipo}) // tipo: 1 para minimental
 {
-    
+    // Use URL parameters
     var { personal, paciente, medico, tipo } = useParams();
-    // console.log(tipo)
+
+    // Navigate to return to login screen upon completion
+    let navigate = useNavigate();
+
+    // Unity contexts to render in questions (ideally contained in minimental.json)
     const unityContext = new UnityContext({
         loaderUrl: "/../../../../webGL/pentagons/WebBuildPentagon.loader.js",
         dataUrl: "/../../../../webGL/pentagons/WebBuildPentagon.data",
         frameworkUrl: "/../../../../webGL/pentagons/WebBuildPentagon.framework.js",
         codeUrl: "/../../../../webGL/pentagons/WebBuildPentagon.wasm",
     });
-    
     const unityContext2 = new UnityContext({
         loaderUrl: "/../../../../webGL/pencil/WebBuild.loader.js",
         dataUrl: "/../../../../webGL/pencil/WebBuild.data",
         frameworkUrl: "/../../../../webGL/pencil/WebBuild.framework.js",
         codeUrl: "/../../../../webGL/pencil/WebBuild.wasm",
     });
-    // Estado y hook de visibilidad de botón Continuar
+
+    // Continuar button visibility state and hook
     const [showNext, setShowNext] = useState(true)
 
-    // Estado y hook de visibilidad de contenido adicional
+    // Additional content visibility state and hook
     const [showAdditional, setShowAdditional] = useState(false)
 
-    // Estado y hook de puntaje que SIEMPRE cambia
-    // Se garantiza que se actualice la página
-    // No se actualiza si:
-    // - puntaje de pregunta actual == pregunta anterior al presionar Atrás
-    // - puntaje de pregunta actual == pregunta siguiente al presionar Continuar
+    // Flip-flop state and hook to ensure score is always updated
+    // It does not update when:
+    // - current q. score == prev. q. score when tapping Atrás
+    // - current q. score == next q. score when tapping Continuar
     const [update, setUpdate] = useState(false)
 
-    // Estado y hook de envío de datos
+    // Data send status state and hook
     const [sent, setSent] = useState(false);
     
-    // Funciones de navegación
-    // - Actualizan índice de pregunta
-    // - Ocultan contenido adicional para mostrar pregunta
-    // - Corren hook de actualización
-    // - Muestran y ocultan botón de continuar
+    // Navigation functions
+    // - Update page/question index
+    // - Hide additional content to show question
+    // - Run update hook
+    // - Show and hide Continuar button
     const prevQ = () => {
         qNum--
         setShowAdditional(false)
@@ -63,11 +63,11 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
         setShowNext(scores[qNum] !== -1)
     }
 
-    // Función de llamada para mostrar botón de continuar
-    // Se pasa a componente DefaultQuestion
+    // Callback function to display Continuar button
+    // Passed down as prop to DefaultQuestion component
     const updateCallback = () => setShowNext(true)
 
-    // Función que retorna puntaje total y por categoría
+    // Compute total and per category score
     const sumScores = () => {
         let perCategory = Array(minimental.categories.length).fill(0)
         let scoreSum = 0
@@ -83,10 +83,10 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
     }
 
     // DEV
-    // - Imprime puntajes e índice de pregunta actual
+    // - Print scores and current q. idx.
     const printState = () => {console.log(scores); console.log("Question index: " + qNum);}
-    // DEV
-    // - Despliega puntajes que se deben mandar al backend al presionar Enviar
+
+    // Send scores and return to login screen
     const sendData = () => {
         setSent(true);
         let results = sumScores();
@@ -112,14 +112,15 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 {
                     console.log(data);
                 });
+        navigate("/");
     }
 
-    // Botones de navegación
+    // Navigation buttons
     function NavButtons() {
         return (
             <>
-                {/* Botón de retroceso
-                    - Disponible en todas las pantallas excepto la primera */}
+                {/* Atrás: previous screen
+                    - Available in all but first screen */}
                 <div>
                     {qNum >= 0 &&
                     <button className="eval-nav-button" onClick={prevQ}>
@@ -128,14 +129,14 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 </div>
 
                 {/* DEV
-                    - Imprime puntajes e índice a consola */}
+                    - Print scores and current q. idx. */}
                 <div>
                     {/* <button onClick={printState}>(dev)Estado</button> */}
                 </div>
 
-                {/* Botón de avance
-                    - Disponible en todas las pantallas excepto la última
-                    - No disponible en pantalla de pregunta cuando aún no se responde */}
+                {/* Continuar: next screen
+                    - Available in all but last screen
+                    - Unavailable if question has not yet been answered */}
                 <div>
                     {qNum < minimental.questions.length &&
                     showNext &&
@@ -144,9 +145,9 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                     </button>}
                 </div>
                 
-                {/* Botón de envío de datos
-                    - Disponible en la última pantalla
-                    - Envía datos una vez */}
+                {/* Enviar: send data
+                    - Available in last screen
+                    - Send data once */}
                 <div>
                     {qNum === minimental.questions.length &&
                     <button className="eval-nav-button" onClick={() => {if (!sent) sendData();}}>
@@ -159,9 +160,8 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
     
     return (
         <div className="exam-info">
-            {/* Pantalla previa
-                - Se despliega cuando el índice es -1
-                  (i. e. no corresponde a ninguna pregunta) */}
+            {/* Pre-exam screen
+                - Displayed when q. idx. is -1 */}
             {qNum === -1 &&
             <>
                 <h1 className="exam-name">{minimental.name}</h1>
@@ -170,16 +170,16 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 </p>
             </>}
 
-            {/* Examen
-                - Se despliega cuando el índice corresponde a una pregunta */}
+            {/* Exam
+                - Displayed when q. idx. corresponds to a question */}
             {qNum >= 0 &&
             qNum < minimental.questions.length &&
 
-            // Condicionales para desplegar distintas pantallas de examen
+            // Conditionals to display exam screens
             (showAdditional ?
             minimental.questions[qNum].additional ?
-            // ¿Desplegar cont. adicional?: VERDADERO
-            // ¿Pregunta tiene cont. adicional?: VERDADERO
+            // Display additional content?: TRUE
+            // Question has add. content?: TRUE
             <>
                 {minimental.questions[qNum].additional === 1 ?
                     <h1 style={{fontSize: "10em", textAlign: "center"}}>CIERRE LOS OJOS </h1>
@@ -204,19 +204,20 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 </Fragment>
                 : <></>
                 }
-
+                {/* Ocultar: hide additional content
+                    - Available in questions with additional content */}
                 <button className="eval-nav-button" onClick={() => setShowAdditional(!showAdditional)}>
                     Ocultar
                 </button>
             </> :
 
-            // ¿Desplegar cont. adicional?: VERDADERO
-            // ¿Pregunta tiene cont. adicional?: FALSO
-            // NOTA: No se despliega nada porque nunca se llega a este estado
+            // Display additional content?: TRUE
+            // Question has add. content?: FALSE
+            // NOTE: Nothing is displayed because state is never reached
             <></> :
 
-            // ¿Desplegar cont. adicional?: FALSO
-            // ¿Pregunta tiene cont. adicional?: IRRELEVANTE
+            // Display additional content?: FALSE
+            // Question has add. content?: IRRELEVANT
             <>
                 <DefaultQuestion
                     question={minimental.questions[qNum]}
@@ -225,8 +226,8 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                     updateCallback={updateCallback}
                 />
 
-                {/* Botón de despliegue de contenido adicional
-                    - Disponible en preguntas con contenido adicional */}
+                {/* Mostrar: show additional content
+                    - Available in questions with additional content */}
                 <div>
                     {minimental.questions[qNum].additional &&
                     <button className="eval-nav-button" onClick={() => setShowAdditional(!showAdditional)}>
@@ -235,9 +236,9 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 </div>
             </>)}
 
-            {/* Pantalla de envío de datos
-                - Se despliega cuando el índice es la cantidad de preguntas
-                  (i. e. no corresponde a ninguna pregunta) */}
+            {/* Data send screen
+                - Displayed when q. idx. is equal to no. of questions
+                  (i.e. it does not correspond to any question) */}
             {qNum === minimental.questions.length &&
             <>
                 <h1>{minimental.name}</h1>
@@ -246,7 +247,7 @@ export default function Minimental({personal, paciente, medico, tipo}) // tipo =
                 </p>
             </>}
 
-            {/* Botones de navegación */}
+            {/* Navigation buttons */}
             <div id="nav-buttons" className="nav-buttons">
                 <NavButtons />
             </div>

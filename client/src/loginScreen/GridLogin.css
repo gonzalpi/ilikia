@@ -12,3 +12,44 @@
     /* margin-right: 30%; */
 
 }
+
+.gl-title {
+    font-size: 4em;
+    font-family: "Montserrat";
+    color: #556500;
+    margin: 0
+}
+
+.gl-text {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 2em
+}
+
+.gl-input {
+    text-align: "left";
+    position: "sticky";
+    color: rgb(25, 29, 8, 0.8);
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 2em;
+    border-radius: 40px;
+    padding: 4%;
+    background-color: #E1E5C3;
+    border: none
+}
+
+.gl-button {
+    background-color: #D7EC7C;
+    width: 50%;
+    height: 4.5em;
+    margin: auto;
+    border-radius: 40px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 1.3em;
+    text-align: center;
+    border: none;
+    color: #3D4719;
+    cursor: pointer
+}
